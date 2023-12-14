@@ -8,6 +8,7 @@ export const BlogPage = lazy(() => import('src/pages/blog'));
 export const UserPage = lazy(() => import('src/pages/user'));
 export const LoginPage = lazy(() => import('src/pages/login'));
 export const ProductsPage = lazy(() => import('src/pages/products'));
+export const UploadPage = lazy(() => import('src/pages/upload'));
 export const Page404 = lazy(() => import('src/pages/page-not-found'));
 
 // ----------------------------------------------------------------------
@@ -23,12 +24,17 @@ export default function Router() {
         </DashboardLayout>
       ),
       children: [
+
+        // wird auf der Startseite neben dem linken menu angezeigt
+
         { element: <IndexPage />, index: true },
         { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
+        { path: 'upload', element: <UploadPage /> },
       ],
     },
+    // wird auf einer externen seite angezeigt
     {
       path: 'login',
       element: <LoginPage />,

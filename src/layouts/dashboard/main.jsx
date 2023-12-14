@@ -15,7 +15,7 @@ export default function Main({ children, sx, ...other }) {
 
   return (
     <Box
-      component="main"
+      component="main" 
       sx={{
         flexGrow: 1,
         minHeight: 1,
@@ -30,7 +30,7 @@ export default function Main({ children, sx, ...other }) {
         ...sx,
       }}
       {...other}
-    >
+    > 
       {children}
     </Box>
   );

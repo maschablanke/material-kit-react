@@ -33,6 +33,11 @@ const navConfig = [
     icon: icon('ic_lock'),
   },
   {
+    title: 'upload',
+    path: '/upload',
+    icon: icon('CloudUploadIcon'),
+  },
+  {
     title: 'Not found',
     path: '/404',
     icon: icon('ic_disabled'),
