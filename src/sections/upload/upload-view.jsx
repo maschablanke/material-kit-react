@@ -1,7 +1,9 @@
 import * as React from 'react';
 
+import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
+import Container from '@mui/material/Container';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 import { UserView } from 'src/sections/user/view';
@@ -21,10 +23,17 @@ const VisuallyHiddenInput = styled('input')({
 
 export default function UploadView() {
   return (
-    <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
-      Upload file
-      <VisuallyHiddenInput type="file" />
+    <Container>
       <UserView />
-    </Button>
+        <Stack direction="row" spacing={2}>
+          <Button component="label"  variant="contained" startIcon={<CloudUploadIcon />}>
+            Upload files
+            <VisuallyHiddenInput type="file" />
+          </Button>
+          <Button>
+            helloo
+          </Button>
+        </Stack>
+    </Container>
   );
 }

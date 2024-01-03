@@ -11,6 +11,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 
 import { users } from 'src/_mock/user';
+import { tradeRepublic } from 'src/_mock/tradeRepublic';
 
 import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
@@ -87,7 +88,7 @@ export default function UserPage() {
   };
 
   const dataFiltered = applyFilter({
-    inputData: users,
+    inputData: tradeRepublic,
     comparator: getComparator(order, orderBy),
     filterName,
   });
@@ -122,12 +123,11 @@ export default function UserPage() {
                 onRequestSort={handleSort}
                 onSelectAllClick={handleSelectAllClick}
                 headLabel={[
-                  { id: 'name', label: 'Name' },
+                  { id: 'type', label: 'Type' },
                   { id: 'company', label: 'Company' },
-                  { id: 'role', label: 'Role' },
-                  { id: 'isVerified', label: 'Verified', align: 'center' },
-                  { id: 'status', label: 'Status' },
-                  { id: '' },
+                  { id: 'id', label: 'ID' },
+                  { id: 'date', label: 'Date', align: 'center' },
+                  { id: 'isin', label: 'Isin' },
                 ]}
               />
               <TableBody>
@@ -136,12 +136,11 @@ export default function UserPage() {
                   .map((row) => (
                     <UserTableRow
                       key={row.id}
-                      name={row.name}
-                      role={row.role}
-                      status={row.status}
+                      type={row.type}
+                      id={row.id}
                       company={row.company}
-                      avatarUrl={row.avatarUrl}
-                      isVerified={row.isVerified}
+                      date={row.date}
+                      isin={row.isin}
                       selected={selected.indexOf(row.name) !== -1}
                       handleClick={(event) => handleClick(event, row.name)}
                     />

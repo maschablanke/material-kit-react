@@ -2,7 +2,6 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Stack from '@mui/material/Stack';
-import Avatar from '@mui/material/Avatar';
 import Popover from '@mui/material/Popover';
 import TableRow from '@mui/material/TableRow';
 import Checkbox from '@mui/material/Checkbox';
@@ -17,13 +16,12 @@ import Iconify from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 export default function UserTableRow({
-  selected,
-  name,
-  avatarUrl,
+  id,
+  type,
   company,
-  role,
-  isVerified,
-  status,
+  id,
+  date,
+  isin,
   handleClick,
 }) {
   const [open, setOpen] = useState(null);
@@ -45,9 +43,8 @@ export default function UserTableRow({
 
         <TableCell component="th" scope="row" padding="none">
           <Stack direction="row" alignItems="center" spacing={2}>
-            <Avatar alt={name} src={avatarUrl} />
             <Typography variant="subtitle2" noWrap>
-              {name}
+              {type}
             </Typography>
           </Stack>
         </TableCell>
@@ -94,11 +91,11 @@ export default function UserTableRow({
 }
 
 UserTableRow.propTypes = {
-  avatarUrl: PropTypes.any,
+  id: PropTypes.any,
   company: PropTypes.any,
   handleClick: PropTypes.func,
   isVerified: PropTypes.any,
-  name: PropTypes.any,
+  type: PropTypes.any,
   role: PropTypes.any,
   selected: PropTypes.any,
   status: PropTypes.string,
