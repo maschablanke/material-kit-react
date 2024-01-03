@@ -50,6 +50,12 @@ export default function UserTableRow({
 
         <TableCell>{company}</TableCell>
 
+        <TableCell>{id}</TableCell>
+
+        <TableCell>{date}</TableCell>
+
+        <TableCell>{isin}</TableCell>
+
 
         <TableCell align="right">
           <IconButton onClick={handleOpenMenu}>
