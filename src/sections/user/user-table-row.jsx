@@ -10,7 +10,6 @@ import TableCell from '@mui/material/TableCell';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
-import Label from 'src/components/label';
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
@@ -19,9 +18,9 @@ export default function UserTableRow({
   id,
   type,
   company,
-  id,
   date,
   isin,
+  selected,
   handleClick,
 }) {
   const [open, setOpen] = useState(null);
@@ -51,13 +50,6 @@ export default function UserTableRow({
 
         <TableCell>{company}</TableCell>
 
-        <TableCell>{role}</TableCell>
-
-        <TableCell align="center">{isVerified ? 'Yes' : 'No'}</TableCell>
-
-        <TableCell>
-          <Label color={(status === 'banned' && 'error') || 'success'}>{status}</Label>
-        </TableCell>
 
         <TableCell align="right">
           <IconButton onClick={handleOpenMenu}>
@@ -94,9 +86,8 @@ UserTableRow.propTypes = {
   id: PropTypes.any,
   company: PropTypes.any,
   handleClick: PropTypes.func,
-  isVerified: PropTypes.any,
-  type: PropTypes.any,
-  role: PropTypes.any,
   selected: PropTypes.any,
-  status: PropTypes.string,
+  type: PropTypes.any,
+  date: PropTypes.any,
+  isin: PropTypes.any,
 };
