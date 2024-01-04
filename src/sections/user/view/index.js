@@ -1,1 +1,1 @@
-export { default as UserView } from './tradeRepublic-view';
+export { default as UserView } from './user-view';

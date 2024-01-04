@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
-import { UserView } from 'src/sections/user/view';
+import { UserView } from 'src/sections/upload/view';
 
 
 const VisuallyHiddenInput = styled('input')({
