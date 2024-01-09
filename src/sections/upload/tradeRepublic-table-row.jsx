@@ -14,7 +14,7 @@ import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
-export default function UserTableRow({
+export default function TradeRepublicTableRow({
   id,
   type,
   company,
@@ -88,7 +88,7 @@ export default function UserTableRow({
   );
 }
 
-UserTableRow.propTypes = {
+TradeRepublicTableRow.propTypes = {
   id: PropTypes.any,
   company: PropTypes.any,
   handleClick: PropTypes.func,
