@@ -18,14 +18,14 @@ import Scrollbar from 'src/components/scrollbar';
 
 import TableNoData from '../table-no-data';
 import TableEmptyRows from '../table-empty-rows';
-import UserTableRow from '../tradeRepublic-table-row';
-import UserTableHead from '../tradeRepublic-table-head';
-import UserTableToolbar from '../tradeRepublic-table-toolbar';
+import TradeRepublicTableRow from '../tradeRepublic-table-row';
+import TradeRepublicTableHead from '../tradeRepublic-table-head';
+import TradeRepublicTableToolbar from '../tradeRepublic-table-toolbar';
 import { emptyRows, applyFilter, getComparator } from '../utils';
 
 // ----------------------------------------------------------------------
 
-export default function UserPage() {
+export default function TradeRepublicPage() {
   const [page, setPage] = useState(0);
 
   const [order, setOrder] = useState('asc');
@@ -106,7 +106,7 @@ export default function UserPage() {
       </Stack>
 
       <Card>
-        <UserTableToolbar
+        <TradeRepublicTableToolbar
           numSelected={selected.length}
           filterName={filterName}
           onFilterName={handleFilterByName}
@@ -115,7 +115,7 @@ export default function UserPage() {
         <Scrollbar>
           <TableContainer sx={{ overflow: 'unset' }}>
             <Table sx={{ minWidth: 800 }}>
-              <UserTableHead
+              <TradeRepublicTableHead
                 order={order}
                 orderBy={orderBy}
                 rowCount={users.length}
@@ -134,7 +134,7 @@ export default function UserPage() {
                 {dataFiltered
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => (
-                    <UserTableRow
+                    <TradeRepublicTableRow
                       key={row.id}
                       type={row.type}
                       id={row.id}

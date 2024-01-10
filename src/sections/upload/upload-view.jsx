@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
-import { UserView } from 'src/sections/upload/view';
+import { TradeRepublicView } from 'src/sections/upload/view';
 
 
 const VisuallyHiddenInput = styled('input')({
@@ -24,7 +24,7 @@ const VisuallyHiddenInput = styled('input')({
 export default function UploadView() {
   return (
     <Container>
-      <UserView />
+      <TradeRepublicView />
         <Stack direction="row" spacing={2}>
           <Button component="label"  variant="contained" startIcon={<CloudUploadIcon />}>
             Upload files
