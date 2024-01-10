@@ -25,6 +25,7 @@ export default function UploadView() {
   return (
     <Container>
       <TradeRepublicView />
+      <TradeRepublicView />
         <Stack direction="row" spacing={2}>
           <Button component="label"  variant="contained" startIcon={<CloudUploadIcon />}>
             Upload files

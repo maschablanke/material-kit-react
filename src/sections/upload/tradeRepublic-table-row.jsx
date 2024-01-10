@@ -15,9 +15,9 @@ import Iconify from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 export default function TradeRepublicTableRow({
-  id,
   type,
   company,
+  id,
   date,
   isin,
   selected,
