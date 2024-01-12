@@ -141,7 +141,7 @@ export default function AnalysedFieldsPage() {
                   { id: 'row 21', label: '21' },
                   { id: 'row 22', label: '22' },
                   { id: 'row 23', label: '23' },
-                  { id: 'row 24', label: '' },
+                  { id: '1'},
                 ]}
               />
               <TableBody>
@@ -151,6 +151,7 @@ export default function AnalysedFieldsPage() {
                     <AnalysedFieldsRow
                       key={row.id}
                       id={row.id}
+                      row={row}
                       selected={selected.indexOf(row.name) !== -1}
                       handleClick={(event) => handleClick(event, row.name)}
                     />

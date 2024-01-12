@@ -13,6 +13,7 @@ import Iconify from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 export default function AnalysedFieldsRow({
+  row,
   id,
   selected,
   handleClick,
@@ -36,33 +37,35 @@ export default function AnalysedFieldsRow({
 
         <TableCell>{id}</TableCell>
 
-        <TableCell>{0}</TableCell>
+        <TableCell>{row ["row 0"]}</TableCell>
 
-        <TableCell>{1}</TableCell>
+        <TableCell>{row ["row 1"]}</TableCell>
 
-        <TableCell>{2}</TableCell>
+        <TableCell>{row ["row 2"]}</TableCell>
 
-        <TableCell>{3}</TableCell>
-        <TableCell>{4}</TableCell>
-        <TableCell>{5}</TableCell>
-        <TableCell>{6}</TableCell>
-        <TableCell>{7}</TableCell>
-        <TableCell>{8}</TableCell>
-        <TableCell>{9}</TableCell>
-        <TableCell>{10}</TableCell>
-        <TableCell>{11}</TableCell>
-        <TableCell>{12}</TableCell>
-        <TableCell>{13}</TableCell>
-        <TableCell>{14}</TableCell>
-        <TableCell>{15}</TableCell>
-        <TableCell>{16}</TableCell>
-        <TableCell>{17}</TableCell>
-        <TableCell>{18}</TableCell>
-        <TableCell>{19}</TableCell>
-        <TableCell>{20}</TableCell>
-        <TableCell>{21}</TableCell>
-        <TableCell>{22}</TableCell>
-        <TableCell>{23}</TableCell>
+        <TableCell>{row ["row 3"]}</TableCell>
+        <TableCell>{row ["row 4"]}</TableCell>
+        <TableCell>{row ["row 5"]}</TableCell>
+        <TableCell>{row ["row 6"]}</TableCell>
+        <TableCell>{row ["row 6"]}</TableCell>
+        <TableCell>{row ["row 7"]}</TableCell>
+        <TableCell>{row ["row 8"]}</TableCell>
+        <TableCell>{row ["row 9"]}</TableCell>
+        <TableCell>{row ["row 10"]}</TableCell>
+        <TableCell>{row ["row 11"]}</TableCell>
+        <TableCell>{row ["row 12"]}</TableCell>
+        <TableCell>{row ["row 13"]}</TableCell>
+        <TableCell>{row ["row 14"]}</TableCell>
+        <TableCell>{row ["row 15"]}</TableCell>
+        <TableCell>{row ["row 16"]}</TableCell>
+        <TableCell>{row ["row 17"]}</TableCell>
+        <TableCell>{row ["row 18"]}</TableCell>
+        <TableCell>{row ["row 19"]}</TableCell>
+        <TableCell>{row ["row 20"]}</TableCell>
+        <TableCell>{row ["row 21"]}</TableCell>
+        <TableCell>{row ["row 22"]}</TableCell>
+        <TableCell>{row ["row 23"]}</TableCell>
+       
 
 
         <TableCell align="right">
@@ -97,6 +100,7 @@ export default function AnalysedFieldsRow({
 }
 
 AnalysedFieldsRow.propTypes = {
+  row: PropTypes.any,
   id: PropTypes.any,
   handleClick: PropTypes.func,
   selected: PropTypes.any,
