@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import PropTypes, { number } from 'prop-types';
+import PropTypes from 'prop-types';
 
 import Popover from '@mui/material/Popover';
 import TableRow from '@mui/material/TableRow';
@@ -13,7 +13,6 @@ import Iconify from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 export default function AnalysedFieldsRow({
-  number,
   id,
   selected,
   handleClick,
@@ -35,18 +34,18 @@ export default function AnalysedFieldsRow({
           <Checkbox disableRipple checked={selected} onChange={handleClick} />
         </TableCell>
 
-        <TableCell> "1" </TableCell>
-
         <TableCell>{id}</TableCell>
 
-        <TableCell>{number}</TableCell>
+        <TableCell>{0}</TableCell>
 
+        <TableCell>{1}</TableCell>
+
+        <TableCell>{2}</TableCell>
+
+        <TableCell>{3}</TableCell>
         <TableCell>{4}</TableCell>
-
         <TableCell>{5}</TableCell>
-
         <TableCell>{6}</TableCell>
-
         <TableCell>{7}</TableCell>
         <TableCell>{8}</TableCell>
         <TableCell>{9}</TableCell>
@@ -54,6 +53,16 @@ export default function AnalysedFieldsRow({
         <TableCell>{11}</TableCell>
         <TableCell>{12}</TableCell>
         <TableCell>{13}</TableCell>
+        <TableCell>{14}</TableCell>
+        <TableCell>{15}</TableCell>
+        <TableCell>{16}</TableCell>
+        <TableCell>{17}</TableCell>
+        <TableCell>{18}</TableCell>
+        <TableCell>{19}</TableCell>
+        <TableCell>{20}</TableCell>
+        <TableCell>{21}</TableCell>
+        <TableCell>{22}</TableCell>
+        <TableCell>{23}</TableCell>
 
 
         <TableCell align="right">
@@ -88,7 +97,6 @@ export default function AnalysedFieldsRow({
 }
 
 AnalysedFieldsRow.propTypes = {
-  number: PropTypes.any,
   id: PropTypes.any,
   handleClick: PropTypes.func,
   selected: PropTypes.any,
