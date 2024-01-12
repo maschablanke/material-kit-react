@@ -1,6 +1,6 @@
 export const analysedFields = [
     {
-        "0": "ASTANIENALLEE 32 10435",
+        "number": "ASTANIENALLEE 32 10435",
         "1": "01.03.2022",
         "2": "astanienallee 32\n10435",
         "3": "Düsseldorf\nAG Düsseldorf HRB 85864",
@@ -22,7 +22,8 @@ export const analysedFields = [
         "19": "VALUTA BETRAG\n\nDE06110101",
         "20": "8889876901 01.03",
         "21": "2 2,94 ",
-        "22": "Siemens Energy AG Na", "id": 93
+        "22": "Siemens Energy AG Na",
+        "id": 93
     },
     {
         "0": "ASTANIENALLEE 32 10435", "1": "23.02.2021",
@@ -46,7 +47,8 @@ export const analysedFields = [
         "19": "VALUTA BETRAG\n\nDE06110101",
         "20": "8889876901 23.02",
         "21": "1 0,88 ",
-        "22": "Hexagon Purus AS Nav", "id": 161
+        "22": "Hexagon Purus AS Nav", 
+        "id": 161
     },
 
     {
@@ -72,7 +74,8 @@ export const analysedFields = [
         "19": "VALUTA BETRAG\n\nDE06110101",
         "20": "8889876901 18.02",
         "21": "2 18,77",
-        "22": "Siemens Healthineers", "id": 95
+        "22": "Siemens Healthineers", 
+        "id": 95
     },
 
     {
@@ -98,7 +101,8 @@ export const analysedFields = [
         "19": "WERTSTELLUNG BETRAG\n\nDE261207007001",
         "20": "05878 04.05.2023",
         "21": "3 31,26",
-        "22": "ATOSS Software AG In", "id": 156
+        "22": "ATOSS Software AG In", 
+        "id": 156
     },
     { "0": "ÖPENICKER STRASSE 40C ", "1": "27.04.2023", "2": "öpenicker Straße 40c\n1", "3": "Berlin\nAG Charlottenburg HRB 24434", "4": "", "5": "Torner\nGernot Mittendorfer\n\nABRE   \/ 28.04.2023 \/ 60027598 \/ d783-fa71", "6": "26", "7": "4", "8": "3", "9": "Ertrag BE", "10": "Proximus S.A.\nAction", "11": "BE0003810273", "12": "100", "13": "0,70", "14": "70,0", "15": "70,0", "16": "", "17": "Quellensteuer -21,00 EUR\n\nKapitalertragsteuer -17,50", "18": "0,96 EUR\n\nGESAMT 30,54", "19": "WERTSTELLUNG BETRAG\n\nDE26120700", "20": "0120005878 28.04", "21": "3 30,54", "22": "Proximus S.A. Action", "id": 236 },
     { "0": "ÖPENICKER STRASSE 40C ", "1": "07.07.2023", "2": "öpenicker Straße 40c\n1", "3": "Berlin\nAG Charlottenburg HRB 24434", "4": "", "5": "Torner\nGernot Mittendorfer\n\nABRE   \/ 07.07.2023 \/ 96473473 \/ 780b-21af", "6": "07", "7": "0", "8": "3", "9": "PREIS", "10": "Carbios S.A.\nAnrecht", "11": " 0,269879 EU", "12": "", "13": "0,26", "14": "EUR ", "15": "13,4", "16": "", "17": "Fremdkostenzuschlag -1,00 EUR\n\nKapitalertragsteuer -3,12", "18": "0,17 EUR\n\nGESAMT 9,20 ", "19": "WERTSTELLUNG BETRAG\n\nDE26120700", "20": "0120005878 05.07", "21": "3 9,20 ", "22": "arbios S.A. Anrechte", "id": 235 },
