@@ -116,8 +116,8 @@ export default function AnalysedFieldsPage() {
                 onRequestSort={handleSort}
                 onSelectAllClick={handleSelectAllClick}
                 headLabel={[
+                  { id: "0", label: '0' },
                   { id: '1', label: '1' },
-                  { id: '2', label: '2' },
                   { id: '3', label: '3' },
                   { id: '4', label: '4' },
                   { id: '5', label: '5' },
@@ -129,7 +129,7 @@ export default function AnalysedFieldsPage() {
                   { id: '11', label: '11' },
                   { id: '12', label: '12' },
                   { id: '13', label: '13' },
-                  { id: '13', label: '' },
+                  { id: '14', label: '' },
                 ]}
               />
               <TableBody>
@@ -137,12 +137,9 @@ export default function AnalysedFieldsPage() {
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => (
                     <AnalysedFieldsRow
-                      key={row.id}
-                      type={row.type}
+                      number={row.number}
                       id={row.id}
-                      company={row.company}
-                      date={row.date}
-                      isin={row.isin}
+                      key={row.id}
                       selected={selected.indexOf(row.name) !== -1}
                       handleClick={(event) => handleClick(event, row.name)}
                     />
