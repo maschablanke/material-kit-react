@@ -45,7 +45,7 @@ export default function TradeRepublicPage() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = tradeRepublic.map((n) => n.name);
+      const newSelecteds = tradeRepublic.map((n) => n.type);
       setSelected(newSelecteds);
       return;
     }

@@ -92,6 +92,10 @@ export default function AnalysedFieldsPage() {
 
   const notFound = !dataFiltered.length && !!filterName;
 
+  const showCols = ["row 0", "row 1", "row 2"];
+
+  const headLineCols = ["id", "isin", "company", "name"];
+
   return (
     <Container>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
@@ -115,40 +119,45 @@ export default function AnalysedFieldsPage() {
                 numSelected={selected.length}
                 onRequestSort={handleSort}
                 onSelectAllClick={handleSelectAllClick}
-                headLabel={[
-                  { id: 'id', label: 'ID' },
-                  { id: 'row 0', label: '0' },
-                  { id: 'row 1', label: '1' },
-                  { id: 'row 2', label: '2' },
-                  { id: 'row 3', label: '3' },
-                  { id: 'row 4', label: '4' },
-                  { id: 'row 5', label: '5' },
-                  { id: 'row 6', label: '6' },
-                  { id: 'row 7', label: '7' },
-                  { id: 'row 8', label: '8' },
-                  { id: 'row 9', label: '9' },
-                  { id: 'row 10', label: '10' },
-                  { id: 'row 11', label: '11' },
-                  { id: 'row 12', label: '12' },
-                  { id: 'row 13', label: '13' },
-                  { id: 'row 14', label: '14' },
-                  { id: 'row 15', label: '15' },
-                  { id: 'row 16', label: '16' },
-                  { id: 'row 17', label: '17' },
-                  { id: 'row 18', label: '18' },
-                  { id: 'row 19', label: '19' },
-                  { id: 'row 20', label: '20' },
-                  { id: 'row 21', label: '21' },
-                  { id: 'row 22', label: '22' },
-                  { id: 'row 23', label: '23' },
-                  { id: '1'},
-                ]}
+                headLabel={
+                  showCols.map((col, i) => (
+                    { id: 'row 1', label: headLineCols[i] }
+                    ))}
+                // headLabel={[
+                //   { id: 'id', label: headLineCols[0] },
+                //   { id: 'row 0', label: '0' },
+                //   { id: 'row 1', label: '1' },
+                //   { id: 'row 2', label: '2' },
+                //   { id: 'row 3', label: '3' },
+                //   { id: 'row 4', label: '4' },
+                //   { id: 'row 5', label: '5' },
+                //   { id: 'row 6', label: '6' },
+                //   { id: 'row 7', label: '7' },
+                //   { id: 'row 8', label: '8' },
+                //   { id: 'row 9', label: '9' },
+                //   { id: 'row 10', label: '10' },
+                //   { id: 'row 11', label: '11' },
+                //   { id: 'row 12', label: '12' },
+                //   { id: 'row 13', label: '13' },
+                //   { id: 'row 14', label: '14' },
+                //   { id: 'row 15', label: '15' },
+                //   { id: 'row 16', label: '16' },
+                //   { id: 'row 17', label: '17' },
+                //   { id: 'row 18', label: '18' },
+                //   { id: 'row 19', label: '19' },
+                //   { id: 'row 20', label: '20' },
+                //   { id: 'row 21', label: '21' },
+                //   { id: 'row 22', label: '22' },
+                //   { id: 'row 23', label: '23' },
+                //   { id: '1'},
+                // ]}
               />
               <TableBody>
                 {dataFiltered
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => (
                     <AnalysedFieldsRow
+                      showCols={showCols}
                       key={row.id}
                       id={row.id}
                       row={row}

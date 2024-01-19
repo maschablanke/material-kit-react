@@ -15,6 +15,7 @@ import Iconify from 'src/components/iconify';
 export default function AnalysedFieldsRow({
   row,
   id,
+  showCols,
   selected,
   handleClick,
 }) {
@@ -37,35 +38,14 @@ export default function AnalysedFieldsRow({
 
         <TableCell>{id}</TableCell>
 
-        <TableCell>{row ["row 0"]}</TableCell>
+        {/* <TableCell>{row ["row 0"]}</TableCell> */}
 
-        <TableCell>{row ["row 1"]}</TableCell>
+        {showCols.map((col, i) => 
+          <TableCell>
+            {row[col]}
+          </TableCell>
+        )}
 
-        <TableCell>{row ["row 2"]}</TableCell>
-
-        <TableCell>{row ["row 3"]}</TableCell>
-        <TableCell>{row ["row 4"]}</TableCell>
-        <TableCell>{row ["row 5"]}</TableCell>
-        <TableCell>{row ["row 6"]}</TableCell>
-        <TableCell>{row ["row 6"]}</TableCell>
-        <TableCell>{row ["row 7"]}</TableCell>
-        <TableCell>{row ["row 8"]}</TableCell>
-        <TableCell>{row ["row 9"]}</TableCell>
-        <TableCell>{row ["row 10"]}</TableCell>
-        <TableCell>{row ["row 11"]}</TableCell>
-        <TableCell>{row ["row 12"]}</TableCell>
-        <TableCell>{row ["row 13"]}</TableCell>
-        <TableCell>{row ["row 14"]}</TableCell>
-        <TableCell>{row ["row 15"]}</TableCell>
-        <TableCell>{row ["row 16"]}</TableCell>
-        <TableCell>{row ["row 17"]}</TableCell>
-        <TableCell>{row ["row 18"]}</TableCell>
-        <TableCell>{row ["row 19"]}</TableCell>
-        <TableCell>{row ["row 20"]}</TableCell>
-        <TableCell>{row ["row 21"]}</TableCell>
-        <TableCell>{row ["row 22"]}</TableCell>
-        <TableCell>{row ["row 23"]}</TableCell>
-       
 
 
         <TableCell align="right">
@@ -102,6 +82,7 @@ export default function AnalysedFieldsRow({
 AnalysedFieldsRow.propTypes = {
   row: PropTypes.any,
   id: PropTypes.any,
+  showCols: PropTypes.any,
   handleClick: PropTypes.func,
   selected: PropTypes.any,
 };
