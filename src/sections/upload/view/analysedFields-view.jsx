@@ -92,9 +92,12 @@ export default function AnalysedFieldsPage() {
 
   const notFound = !dataFiltered.length && !!filterName;
 
-  const showCols = ["row 0", "row 1", "row 2"];
+  // kommt von KI, nicht vrändern!
+  const showCols = ["row 0", "row 1", "row 3", "row 5", "row 17"];
+  
+  // kommt von KI, nicht vrändern!
+  const headLineCols = ["id", "adress", "date", "company", "name", "Type"];
 
-  const headLineCols = ["id", "isin", "company", "name"];
 
   return (
     <Container>
@@ -120,7 +123,7 @@ export default function AnalysedFieldsPage() {
                 onRequestSort={handleSort}
                 onSelectAllClick={handleSelectAllClick}
                 headLabel={
-                  showCols.map((col, i) => (
+                  [...Array(showCols.length+2).keys()].map((col, i) => (
                     { id: 'row 1', label: headLineCols[i] }
                     ))}
                 // headLabel={[

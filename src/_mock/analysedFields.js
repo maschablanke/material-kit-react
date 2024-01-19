@@ -1,3 +1,6 @@
+// 0,2 gleich
+// 4,16,23 leer
+
 export const analysedFields = [
     {
       "id": 93,
