@@ -45,7 +45,7 @@ export default function TradeRepublicPage() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = tradeRepublic.map((n) => n.type);
+      const newSelecteds = tradeRepublic.map((n) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -135,8 +135,8 @@ export default function TradeRepublicPage() {
                       company={row.company}
                       date={row.date}
                       isin={row.isin}
-                      selected={selected.indexOf(row.name) !== -1}
-                      handleClick={(event) => handleClick(event, row.name)}
+                      selected={selected.indexOf(row.id) !== -1}
+                      handleClick={(event) => handleClick(event, row.id)}
                     />
                   ))}
 

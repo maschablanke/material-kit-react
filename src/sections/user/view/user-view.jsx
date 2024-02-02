@@ -38,23 +38,32 @@ export default function UserPage() {
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleSort = (event, id) => {
+    // Überprüfen, ob die aktuelle Spalte aufsteigend sortiert ist
     const isAsc = orderBy === id && order === 'asc';
+    // Überprüfen, ob die Spalte-ID nicht leer ist
     if (id !== '') {
+      // Wenn die aktuelle Sortierreihenfolge aufsteigend ist, setze 'desc', ansonsten 'asc'
       setOrder(isAsc ? 'desc' : 'asc');
+      // Die Spalte, nach der sortiert wird, aktualisieren
       setOrderBy(id);
     }
   };
 
   const handleSelectAllClick = (event) => {
+    // Wenn die "Alle auswählen"-Checkbox aktiviert ist
     if (event.target.checked) {
+      // Erstelle ein neues Array mit den Namen aller Benutzer
       const newSelecteds = users.map((n) => n.name);
+      // Setze den Zustand selected auf das neue Array
       setSelected(newSelecteds);
       return;
     }
+    // Wenn deaktiviert, setze Zustand selected auf ein leeres Array
     setSelected([]);
   };
 
   const handleClick = (event, name) => {
+    // Finde den Index des ausgewählten Elements in der Liste der ausgewählten Elemente
     const selectedIndex = selected.indexOf(name);
     let newSelected = [];
     if (selectedIndex === -1) {

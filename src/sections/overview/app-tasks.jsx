@@ -15,11 +15,17 @@ import Iconify from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 export default function AnalyticsTasks({ title, subheader, list, ...other }) {
+  // Zustand selected erstellt, der ein Array von tasks. Anfangszustand ist ein Array mit Element ('2').
+  // Aufgabe mit der ID '2' standardmäßig als ausgewählt betrachtet wird.
   const [selected, setSelected] = useState(['2']);
 
+  // taskId als Parameter, aktualisiert Zustand selected -> Klick & speichert die ausgewählten Aufgaben
   const handleClickComplete = (taskId) => {
+    // task id schon selected?
     const tasksCompleted = selected.includes(taskId)
+      // ja, dann aus array removen
       ? selected.filter((value) => value !== taskId)
+      // nein, array geadded
       : [...selected, taskId];
 
     setSelected(tasksCompleted);
@@ -29,6 +35,7 @@ export default function AnalyticsTasks({ title, subheader, list, ...other }) {
     <Card {...other}>
       <CardHeader title={title} subheader={subheader} />
 
+      {/* map-Funktion wird verwendet, um für jede Aufgabe in der list ein TaskItem zu erstellen */}
       {list.map((task) => (
         <TaskItem
           key={task.id}
@@ -50,16 +57,19 @@ AnalyticsTasks.propTypes = {
 // ----------------------------------------------------------------------
 
 function TaskItem({ task, checked, onChange }) {
+  // lokale Zustand open mit der useState-Hook
   const [open, setOpen] = useState(null);
 
+  // aufgerufen, wenn das Menü geöffnet werden soll
   const handleOpenMenu = (event) => {
     setOpen(event.currentTarget);
   };
 
+  // aufgerufen, wenn das Menü geschlossen werden soll. Zustand 'open' auf 'null'
   const handleCloseMenu = () => {
     setOpen(null);
   };
-
+  
   const handleMarkComplete = () => {
     handleCloseMenu();
     console.info('MARK COMPLETE', task.id);
@@ -99,7 +109,13 @@ function TaskItem({ task, checked, onChange }) {
         }}
       >
         <FormControlLabel
+          // Dieses Attribut spezifiziert das Steuerelement, das mit dem Etikett verknüpft werden soll(checkbox)
+          // checked = ausgewählt oder need 
+          // on change = Funktion, die aufgerufen wird, wenn sich der Zustand der Checkbox ändert
           control={<Checkbox checked={checked} onChange={onChange} />}
+
+          // Das ist der Text, der als Etikett neben dem Steuerelement angezeigt wird.
+          // In diesem Fall ist es der Name der Aufgabe (task.name)
           label={task.name}
           sx={{ flexGrow: 1, m: 0 }}
         />
@@ -110,12 +126,17 @@ function TaskItem({ task, checked, onChange }) {
       </Stack>
 
       <Popover
+        // Das Menü wird geöffnet, wenn der Zustand open nicht null ist.
         open={!!open}
+        // Das Element, an dem das Menü verankert ist.
         anchorEl={open}
+        // Die Funktion handleCloseMenu wird aufgerufen, wenn das Menü geschlossen
         onClose={handleCloseMenu}
+        // Steuern die Position des Popovers relativ zum Ankerpunkt.
         anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
+
         <MenuItem onClick={handleMarkComplete}>
           <Iconify icon="eva:checkmark-circle-2-fill" sx={{ mr: 2 }} />
           Mark Complete

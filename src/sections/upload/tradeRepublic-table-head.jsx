@@ -29,6 +29,7 @@ export default function TradeRepublicTableHead({
       <TableRow>
         <TableCell padding="checkbox">
           <Checkbox
+            // checkbox für das select all
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}

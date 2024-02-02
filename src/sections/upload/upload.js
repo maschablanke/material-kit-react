@@ -1,1 +1,1 @@
-export { default as UploadView } from './upload-view';
+ export { default as UploadView } from './upload-view';

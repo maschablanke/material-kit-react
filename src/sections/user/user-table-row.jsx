@@ -40,7 +40,11 @@ export default function UserTableRow({
     <>
       <TableRow hover tabIndex={-1} role="checkbox" selected={selected}>
         <TableCell padding="checkbox">
-          <Checkbox disableRipple checked={selected} onChange={handleClick} />
+          <Checkbox disableRipple 
+          // Wenn selected den Wert true hat, Checkbox ausgewählt, onst nicht ausgewählt dargestellt
+          checked={selected} 
+          // Funktion handleClick, wenn sich der Auswahlstatus der Checkbox änder
+          onChange={handleClick} />
         </TableCell>
 
         <TableCell component="th" scope="row" padding="none">
