@@ -85,7 +85,7 @@ export default function TradeRepublicPage() {
   };
 
  // seite von der die daten gerade kommen
-  const dataPage = 'onvista.de.stock.factory'; 
+  const dataPage = 'boerse.de.stock.factory'; // 'onvista.de.stock.factory'; 
 
   // zieht die aktuellen daten aus dem netz von den unterschiedlichen seiten
   const [newData, setNewData] = useState([]);
@@ -97,13 +97,19 @@ export default function TradeRepublicPage() {
          // nimm die daten die(momentan noch) im data.config.baseUrls array stehen
          .then((data) => {
             console.log(data);
-            setNewData(data.config.baseUrls);
+            setNewData(data.config.infos.fields);
          })
          // exeption
          .catch((err) => {
             console.log(err.message);
          });
    }, []);
+
+   // welche spalten werden angezeigt( reihenfolge, anzahl,..)
+   const showCols = ["id", "path", "pattern", "url", "name", "type"];
+   // wie ist die überschrift der zeilen
+  //  const headLineCols = ["id", "path", "pattern", "url", "name", "type"];
+   // const headlineCols = ColumnsOfRows(newData)
 
   const dataFiltered = applyFilter({
 //  inputData: tradeRepublic,
@@ -137,26 +143,25 @@ export default function TradeRepublicPage() {
                 numSelected={selected.length}
                 onRequestSort={handleSort}
                 onSelectAllClick={handleSelectAllClick}
-                headLabel={[
-                  { id: 'type', label: 'Type' },
+                headLabel={
+                  [...Array(showCols.length+2).keys()].map((col, i) => (
+                    { id: 'row 1', label: showCols[i] }
+                    ))}
+                  /* [{ id: 'type', label: 'Type' },
                   { id: 'company', label: 'Company' },
                   { id: 'id', label: 'ID' },
                   { id: 'date', label: 'Date', align: 'center' },
                   { id: 'isin', label: 'Isin' },
                   { id: ''},
-                ]}
+                ]} */
               />
               <TableBody>
                 {dataFiltered
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => (
                     <TradeRepublicTableRow
-                      key={row.id}
-                      type={row.type}
-                      id={row.id}
-                      company={row.company}
-                      date={row.date}
-                      isin={row.isin}
+                      showCols={showCols}
+                      row={row}
                       selected={selected.indexOf(row.id) !== -1}
                       handleClick={(event) => handleClick(event, row.id)}
                     />

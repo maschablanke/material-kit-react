@@ -15,11 +15,8 @@ import Iconify from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 export default function TradeRepublicTableRow({
-  type,
-  company,
-  id,
-  date,
-  isin,
+  row,
+  showCols,
   selected,
   handleClick,
 }) {
@@ -40,23 +37,23 @@ export default function TradeRepublicTableRow({
           <Checkbox disableRipple checked={selected} onChange={handleClick} />
         </TableCell>
 
-        {/* <TableCell component="th" scope="row" padding="none">
-          <Stack direction="row" alignItems="center" spacing={2}>
-            <Typography variant="subtitle2" noWrap>
-              {type}
-            </Typography>
-          </Stack>
-        </TableCell> */}
+        {showCols.map((col, i) => 
+          <TableCell>
+            {row[col]}
+          </TableCell>
+        )}
+{/* 
+        <TableCell>{row.type}</TableCell>
 
-        <TableCell>{type}</TableCell>
+        <TableCell>{row.company}</TableCell>
 
-        <TableCell>{company}</TableCell>
+        <TableCell>{row.id}</TableCell>
 
-        <TableCell>{id}</TableCell>
+        <TableCell>{row.date}</TableCell>
 
-        <TableCell>{date}</TableCell>
+        <TableCell>{row.isin}</TableCell>
 
-        <TableCell>{isin}</TableCell>
+        <TableCell>{row.pattern}</TableCell> */}
 
 
         <TableCell align="right">
@@ -91,11 +88,8 @@ export default function TradeRepublicTableRow({
 }
 
 TradeRepublicTableRow.propTypes = {
-  id: PropTypes.any,
-  company: PropTypes.any,
+  row: PropTypes.any,
+  showCols: PropTypes.any,
   handleClick: PropTypes.func,
-  selected: PropTypes.any,
-  type: PropTypes.any,
-  date: PropTypes.any,
-  isin: PropTypes.any,
-};
+  selected: PropTypes.any
+}
