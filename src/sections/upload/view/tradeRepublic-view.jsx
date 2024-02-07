@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
@@ -45,7 +45,7 @@ export default function TradeRepublicPage() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = tradeRepublic.map((n) => n.name);
+      const newSelecteds = tradeRepublic.map((n) => n.id);
       setSelected(newSelecteds);
       return;
     }
@@ -84,8 +84,30 @@ export default function TradeRepublicPage() {
     setFilterName(event.target.value);
   };
 
+ // seite von der die daten gerade kommen
+  const dataPage = 'onvista.de.stock.factory'; 
+
+  // zieht die aktuellen daten aus dem netz von den unterschiedlichen seiten
+  const [newData, setNewData] = useState([]);
+   useEffect(() => {
+      // url die gelesen wird
+      fetch('http://127.0.0.1:8080/config?id='.concat(dataPage))
+        // ist ne json datei
+         .then((response) => response.json())
+         // nimm die daten die(momentan noch) im data.config.baseUrls array stehen
+         .then((data) => {
+            console.log(data);
+            setNewData(data.config.baseUrls);
+         })
+         // exeption
+         .catch((err) => {
+            console.log(err.message);
+         });
+   }, []);
+
   const dataFiltered = applyFilter({
-    inputData: tradeRepublic,
+//  inputData: tradeRepublic,
+    inputData: newData,
     comparator: getComparator(order, orderBy),
     filterName,
   });
