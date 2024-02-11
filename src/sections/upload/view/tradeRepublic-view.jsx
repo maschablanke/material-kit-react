@@ -84,6 +84,9 @@ export default function TradeRepublicPage() {
     setFilterName(event.target.value);
   };
 
+  const allCols = (data) => 
+    data.flatMap(x => Object.keys(x)).filter((value, index, array) => array.indexOf(value) === index)
+  
  // seite von der die daten gerade kommen
   const dataPage = 'boerse.de.stock.factory'; // 'onvista.de.stock.factory'; 
 
@@ -106,7 +109,12 @@ export default function TradeRepublicPage() {
    }, []);
 
    // welche spalten werden angezeigt( reihenfolge, anzahl,..)
-   const showCols = ["id", "path", "pattern", "url", "name", "type"];
+   // const showCols = ["id", "path", "pattern", "url", "name", "type"];
+  
+   // aus den json daten alle erwähnten columns
+    const showCols = allCols(newData)
+    console.log(showCols)
+    
    // wie ist die überschrift der zeilen
   //  const headLineCols = ["id", "path", "pattern", "url", "name", "type"];
    // const headlineCols = ColumnsOfRows(newData)
@@ -145,7 +153,7 @@ export default function TradeRepublicPage() {
                 onSelectAllClick={handleSelectAllClick}
                 headLabel={
                   [...Array(showCols.length+2).keys()].map((col, i) => (
-                    { id: 'row 1', label: showCols[i] }
+                    { id: i, label: showCols[i] }
                     ))}
                   /* [{ id: 'type', label: 'Type' },
                   { id: 'company', label: 'Company' },
@@ -158,9 +166,10 @@ export default function TradeRepublicPage() {
               <TableBody>
                 {dataFiltered
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => (
+                  .map((row, i) => (
                     <TradeRepublicTableRow
                       showCols={showCols}
+                      key={i}
                       row={row}
                       selected={selected.indexOf(row.id) !== -1}
                       handleClick={(event) => handleClick(event, row.id)}

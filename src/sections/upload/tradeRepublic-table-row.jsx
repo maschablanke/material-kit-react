@@ -38,8 +38,8 @@ export default function TradeRepublicTableRow({
         </TableCell>
 
         {showCols.map((col, i) => 
-          <TableCell>
-            {row[col]}
+          <TableCell key={i}>
+            {typeof row[col] === 'object' ? "[object]" : row[col]}
           </TableCell>
         )}
 {/* 

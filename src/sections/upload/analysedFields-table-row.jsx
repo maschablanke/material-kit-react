@@ -41,7 +41,7 @@ export default function AnalysedFieldsRow({
         {/* <TableCell>{row ["row 0"]}</TableCell> */}
 
         {showCols.map((col, i) => 
-          <TableCell>
+          <TableCell key={i}>
             {row[col]}
           </TableCell>
         )}

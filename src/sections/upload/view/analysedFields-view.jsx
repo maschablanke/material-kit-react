@@ -98,6 +98,9 @@ export default function AnalysedFieldsPage() {
   // kommt von KI, nicht vrändern!
   const headLineCols = ["id", "adress", "date", "company", "name", "Type"];
 
+  const headline = [...Array(showCols.length+2).keys()].map((col, i) => (
+    { id: i, label: headLineCols[i] }
+  ))
 
   return (
     <Container>
@@ -122,10 +125,7 @@ export default function AnalysedFieldsPage() {
                 numSelected={selected.length}
                 onRequestSort={handleSort}
                 onSelectAllClick={handleSelectAllClick}
-                headLabel={
-                  [...Array(showCols.length+2).keys()].map((col, i) => (
-                    { id: 'row 1', label: headLineCols[i] }
-                    ))}
+                headLabel={headline}
                 // headLabel={[
                 //   { id: 'id', label: headLineCols[0] },
                 //   { id: 'row 0', label: '0' },
@@ -158,11 +158,10 @@ export default function AnalysedFieldsPage() {
               <TableBody>
                 {dataFiltered
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => (
+                  .map((row, i) => (
                     <AnalysedFieldsRow
                       showCols={showCols}
-                      key={row.id}
-                      id={row.id}
+                      key={i}
                       row={row}
                       selected={selected.indexOf(row.name) !== -1}
                       handleClick={(event) => handleClick(event, row.name)}
