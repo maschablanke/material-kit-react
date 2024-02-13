@@ -85,7 +85,7 @@ export default function TradeRepublicPage() {
   };
 
  // seite von der die daten gerade kommen
-  const dataPage = 'finance.yahoo.com.stock.factory'; // 'onvista.de.stock.factory'; 
+  const dataPage = 'boerse.de.stock.factory'; // 'onvista.de.stock.factory'; 
 
   // zieht die aktuellen daten aus dem netz von den unterschiedlichen seiten
   const [newData, setNewData] = useState([]);
