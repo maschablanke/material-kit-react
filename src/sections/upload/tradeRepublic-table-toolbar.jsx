@@ -52,7 +52,7 @@ export default function TradeRepublicTableToolbar({ numSelected, filterName, onF
           </IconButton>
         </Tooltip>
       ) : (
-        <Tooltip title="Filter list">
+        <Tooltip title="Filter List">
           <IconButton>
             <Iconify icon="ic:round-filter-list" />
           </IconButton>
