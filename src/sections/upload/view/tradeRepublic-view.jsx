@@ -12,6 +12,7 @@ import TablePagination from '@mui/material/TablePagination';
 // import { tradeRepublic } from 'src/_mock/tradeRepublic';
 
 import Scrollbar from 'src/components/scrollbar';
+import DataSort from '../dataSort';
 
 import TableNoData from '../table-no-data';
 import TableEmptyRows from '../table-empty-rows';
@@ -88,7 +89,7 @@ export default function TradeRepublicPage() {
   const allCols = (data) =>
     data.flatMap(x => Object.keys(x)).filter((value, index, array) => array.indexOf(value) === index)
 
-    
+
   // const dataPage = 'http://localhost:8080/ids';
   // const dataPage = array von lokal host8080 listOfIDs
   const [allDataPages, setAllDataPages] = useState([]);
@@ -118,7 +119,7 @@ export default function TradeRepublicPage() {
 
   useEffect(() => {
     // url die gelesen wird
-    fetch('http://127.0.0.1:8080/config?id='.concat('finance.yahoo.com.stock.factory'))
+    fetch('http://127.0.0.1:8080/config?factoryId='.concat('boerse.de.stock.factory'))
       // ist ne json datei
       .then((response) => response.json())
       // nimm die daten die(momentan noch) im data.config.baseUrls array stehen
@@ -165,6 +166,8 @@ export default function TradeRepublicPage() {
           onFilterName={handleFilterByName}
         />
 
+        <DataSort />
+
         <Scrollbar>
           <TableContainer sx={{ overflow: 'unset' }}>
             <Table sx={{ minWidth: 800 }}>
@@ -178,15 +181,7 @@ export default function TradeRepublicPage() {
                 headLabel={
                   [...Array(showCols.length + 2).keys()].map((col, i) => (
                     { id: i, label: showCols[i] }
-                  ))}
-              /* [{ id: 'type', label: 'Type' },
-              { id: 'company', label: 'Company' },
-              { id: 'id', label: 'ID' },
-              { id: 'date', label: 'Date', align: 'center' },
-              { id: 'isin', label: 'Isin' },
-              { id: ''},
-            ]} */
-              />
+                  ))} />
               <TableBody>
                 {dataFiltered
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)

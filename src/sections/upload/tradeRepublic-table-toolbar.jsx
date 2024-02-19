@@ -25,6 +25,7 @@ export default function TradeRepublicTableToolbar({ numSelected, filterName, onF
         }),
       }}
     >
+
       {numSelected > 0 ? (
         <Typography component="div" variant="subtitle1">
           {numSelected} selected
