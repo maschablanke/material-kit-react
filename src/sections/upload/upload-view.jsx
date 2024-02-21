@@ -8,6 +8,10 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 import { TradeRepublicView , AnalysedFieldsView } from 'src/sections/upload/view';
 
+
+// komplett unnötig 
+
+
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(10 10 10 10)',
   clipPath: 'inset(50%)',

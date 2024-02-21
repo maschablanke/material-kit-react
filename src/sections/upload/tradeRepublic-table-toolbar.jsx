@@ -9,6 +9,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 import Iconify from 'src/components/iconify';
 
+import UploadFile from './uploadButton';
+
 // ----------------------------------------------------------------------
 
 export default function TradeRepublicTableToolbar({ numSelected, filterName, onFilterName }) {
@@ -46,6 +48,10 @@ export default function TradeRepublicTableToolbar({ numSelected, filterName, onF
         />
       )}
 
+      <UploadFile />
+
+
+
       {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton>
@@ -59,6 +65,7 @@ export default function TradeRepublicTableToolbar({ numSelected, filterName, onF
           </IconButton>
         </Tooltip>
       )}
+
     </Toolbar>
   );
 }

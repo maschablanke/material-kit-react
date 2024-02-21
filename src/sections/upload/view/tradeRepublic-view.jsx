@@ -12,7 +12,8 @@ import TablePagination from '@mui/material/TablePagination';
 // import { tradeRepublic } from 'src/_mock/tradeRepublic';
 
 import Scrollbar from 'src/components/scrollbar';
-import DataSort from '../dataSort';
+import DataInput from '../dataInput';
+import UploadFile from '../uploadButton';
 
 import TableNoData from '../table-no-data';
 import TableEmptyRows from '../table-empty-rows';
@@ -166,7 +167,7 @@ export default function TradeRepublicPage() {
           onFilterName={handleFilterByName}
         />
 
-        <DataSort />
+        <DataInput />
 
         <Scrollbar>
           <TableContainer sx={{ overflow: 'unset' }}>
