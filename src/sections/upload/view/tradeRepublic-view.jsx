@@ -12,9 +12,9 @@ import TablePagination from '@mui/material/TablePagination';
 // import { tradeRepublic } from 'src/_mock/tradeRepublic';
 
 import Scrollbar from 'src/components/scrollbar';
-import DataInput from '../dataInput';
-import UploadFile from '../uploadButton';
 
+import DataInput from '../dataInput';
+// import UploadFile from '../uploadButton';
 import TableNoData from '../table-no-data';
 import TableEmptyRows from '../table-empty-rows';
 import TradeRepublicTableRow from '../tradeRepublic-table-row';
@@ -91,13 +91,8 @@ export default function TradeRepublicPage() {
     data.flatMap(x => Object.keys(x)).filter((value, index, array) => array.indexOf(value) === index)
 
 
-  // const dataPage = 'http://localhost:8080/ids';
-  // const dataPage = array von lokal host8080 listOfIDs
+  // 'http://localhost:8080/ids';
   const [allDataPages, setAllDataPages] = useState([]);
-
-  // const dataPage = 'finance.yahoo.com.stock.factory';  // 'boerse.de.stock.factory'; // 'onvista.de.stock.factory'; 
-  // seite von der die daten gerade kommen
-  const [dataPage, setDataPage] = useState('finance.yahoo.com.stock.factory');
 
   useEffect(() => {
     // url die gelesen wird
@@ -120,7 +115,7 @@ export default function TradeRepublicPage() {
 
   useEffect(() => {
     // url die gelesen wird
-    fetch('http://127.0.0.1:8080/config?factoryId='.concat('boerse.de.stock.factory'))
+    fetch('http://127.0.0.1:8080/config?factoryId='.concat('finance.yahoo.com.stock.factory'))
       // ist ne json datei
       .then((response) => response.json())
       // nimm die daten die(momentan noch) im data.config.baseUrls array stehen
@@ -132,18 +127,17 @@ export default function TradeRepublicPage() {
       .catch((err) => {
         console.log(err.message);
       });
-  }, []);
+    }, []);
 
-  // welche spalten werden angezeigt( reihenfolge, anzahl,..)
-  // const showCols = ["id", "path", "pattern", "url", "name", "type"];
 
+    // test
+    console.log(allDataPages);
+
+
+  // wie ist die überschrift der zeilen
   // aus den json daten alle erwähnten columns
   const showCols = allCols(newData)
   console.log(showCols)
-
-  // wie ist die überschrift der zeilen
-  //  const headLineCols = ["id", "path", "pattern", "url", "name", "type"];
-  // const headlineCols = ColumnsOfRows(newData)
 
   const dataFiltered = applyFilter({
     //  inputData: tradeRepublic,
