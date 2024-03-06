@@ -36,7 +36,7 @@ export default function SimpleListMenu() {
 
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const [selectedIndex, setSelectedIndex] = React.useState();
   const open = Boolean(anchorEl);
   const handleClickListItem = (event) => {
     setAnchorEl(event.currentTarget);
@@ -67,11 +67,12 @@ export default function SimpleListMenu() {
           onClick={handleClickListItem}
         >
           <ListItemText
-            primary="When device is locked"
+            primary="Choose your Data"
             secondary={dataOptions[selectedIndex]}
           />
         </ListItemButton>
       </List>
+      
       <Menu
         id="lock-menu"
         anchorEl={anchorEl}
@@ -85,7 +86,6 @@ export default function SimpleListMenu() {
         {dataOptions.map((option, index) => (
           <MenuItem
             key={option}
-            disabled={index === 0}
             selected={index === selectedIndex}
             onClick={(event) => handleMenuItemClick(event, index)}
           >
