@@ -1,18 +1,40 @@
 import * as React from 'react';
+import { useEffect , useState} from 'react';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 
-const options = [
-  'Show some love to MUI',
-  'Show all notification content',
-  'Hide sensitive notification content',
-  'Hide all notification content',
-];
+// const options = [
+//   'Show some love to MUI',
+//   'Show all notification content',
+//   'Hide sensitive notification content',
+//   'Hide all notification content',
+// ];
+
 
 export default function SimpleListMenu() {
+    
+    const [dataOptions, setAllDataPages] = useState([]);
+
+    useEffect(() => {
+      // url die gelesen wird
+      fetch('http://localhost:8080/factoryIds')
+        // ist ne json datei
+        .then((response) => response.json())
+        // nimm die daten die(momentan noch) im data.config.baseUrls array stehen
+        .then((data) => {
+          console.log(data);
+          setAllDataPages(data);
+        })
+        // exeption
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }, []);
+
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
   const open = Boolean(anchorEl);
@@ -46,7 +68,7 @@ export default function SimpleListMenu() {
         >
           <ListItemText
             primary="When device is locked"
-            secondary={options[selectedIndex]}
+            secondary={dataOptions[selectedIndex]}
           />
         </ListItemButton>
       </List>
@@ -60,7 +82,7 @@ export default function SimpleListMenu() {
           role: 'listbox',
         }}
       >
-        {options.map((option, index) => (
+        {dataOptions.map((option, index) => (
           <MenuItem
             key={option}
             disabled={index === 0}

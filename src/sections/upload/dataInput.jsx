@@ -14,7 +14,7 @@ export default function DataInput() {
 
   const [open, setOpen] = useState(null);
 
-  const [DATA_OPTIONS, setAllDataPages] = useState([]);
+  const [dataOptions, setAllDataPages] = useState([]);
 
   useEffect(() => {
     // url die gelesen wird
@@ -72,7 +72,7 @@ export default function DataInput() {
           },
         }}
       >
-        {DATA_OPTIONS.map((option, i) => (
+        {dataOptions.map((option, i) => (
           <MenuItem key={i} selected={option.value === 'newest'} onClick={handleClose}>
             {option}
           </MenuItem>
