@@ -13,6 +13,7 @@ import TablePagination from '@mui/material/TablePagination';
 
 import Scrollbar from 'src/components/scrollbar';
 import DataInput from '../dataInput';
+import SimpleListMenu from '../dataInputTest';
 import UploadFile from '../uploadButton';
 
 import TableNoData from '../table-no-data';
@@ -168,6 +169,7 @@ export default function TradeRepublicPage() {
         />
 
         <DataInput />
+        <SimpleListMenu/>
 
         <Scrollbar>
           <TableContainer sx={{ overflow: 'unset' }}>
