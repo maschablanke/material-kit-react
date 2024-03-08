@@ -10,11 +10,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 
 // import { tradeRepublic } from 'src/_mock/tradeRepublic';
-
 import Scrollbar from 'src/components/scrollbar';
+
 import DataInput from '../dataInput';
 import SimpleListMenu from '../dataInputTest';
-import UploadFile from '../uploadButton';
+// import UploadFile from '../uploadButton';
 
 import TableNoData from '../table-no-data';
 import TableEmptyRows from '../table-empty-rows';
@@ -92,35 +92,14 @@ export default function TradeRepublicPage() {
     data.flatMap(x => Object.keys(x)).filter((value, index, array) => array.indexOf(value) === index)
 
 
-  // const dataPage = 'http://localhost:8080/ids';
-  // const dataPage = array von lokal host8080 listOfIDs
-  const [allDataPages, setAllDataPages] = useState([]);
-
-  // const dataPage = 'finance.yahoo.com.stock.factory';  // 'boerse.de.stock.factory'; // 'onvista.de.stock.factory'; 
   // seite von der die daten gerade kommen
-  const [dataPage, setDataPage] = useState('finance.yahoo.com.stock.factory');
-
-  useEffect(() => {
-    // url die gelesen wird
-    fetch('http://127.0.0.1:8080/ids')
-      // ist ne json datei
-      .then((response) => response.json())
-      // nimm die daten die(momentan noch) im data.config.baseUrls array stehen
-      .then((data) => {
-        console.log(data);
-        setAllDataPages(data);
-      })
-      // exeption
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
-
+  // const [dataPage, setDataPage] = useState('finance.yahoo.com.stock.factory');
   // zieht die aktuellen daten aus dem netz von den unterschiedlichen seiten
-  const [newData, setNewData] = useState([]);
+  const [newData, setNewData] = useState([]); 
 
   useEffect(() => {
     // url die gelesen wird
+    // conact with data from dataInputTest
     fetch('http://127.0.0.1:8080/config?factoryId='.concat('boerse.de.stock.factory'))
       // ist ne json datei
       .then((response) => response.json())
@@ -135,8 +114,9 @@ export default function TradeRepublicPage() {
       });
   }, []);
 
-  // welche spalten werden angezeigt( reihenfolge, anzahl,..)
-  // const showCols = ["id", "path", "pattern", "url", "name", "type"];
+
+  // var die die aus der drop down tabelle die ausgewählte seite wieergeben soll
+  // const choosenWebsite =
 
   // aus den json daten alle erwähnten columns
   const showCols = allCols(newData)

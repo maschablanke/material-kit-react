@@ -1,22 +1,18 @@
-import * as React from 'react';
-import { useEffect , useState} from 'react';
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
+import {  useState, useEffect } from 'react';
 
-// const options = [
-//   'Show some love to MUI',
-//   'Show all notification content',
-//   'Hide sensitive notification content',
-//   'Hide all notification content',
-// ];
+import List from '@mui/material/List';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemButton from '@mui/material/ListItemButton';
 
 
 export default function SimpleListMenu() {
     
-    const [dataOptions, setAllDataPages] = useState([]);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [dataOptions, setAllDataPages] = useState([]);
+
+  const open = Boolean(anchorEl);
 
     useEffect(() => {
       // url die gelesen wird
@@ -34,10 +30,7 @@ export default function SimpleListMenu() {
         });
     }, []);
 
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [selectedIndex, setSelectedIndex] = React.useState();
-  const open = Boolean(anchorEl);
+  const [selectedIndex, setSelectedIndex] = useState();
   const handleClickListItem = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -51,13 +44,14 @@ export default function SimpleListMenu() {
     setAnchorEl(null);
   };
 
+  
   return (
     <div>
       <List
         component="nav"
         aria-label="Device settings"
         sx={{ bgcolor: 'background.paper' }}
-      >
+        >
         <ListItemButton
           id="lock-button"
           aria-haspopup="listbox"
@@ -65,11 +59,11 @@ export default function SimpleListMenu() {
           aria-label="when device is locked"
           aria-expanded={open ? 'true' : undefined}
           onClick={handleClickListItem}
-        >
+          >
           <ListItemText
             primary="Choose your Data"
             secondary={dataOptions[selectedIndex]}
-          />
+            />
         </ListItemButton>
       </List>
       
@@ -82,12 +76,12 @@ export default function SimpleListMenu() {
           'aria-labelledby': 'lock-button',
           role: 'listbox',
         }}
-      >
+        >
         {dataOptions.map((option, index) => (
           <MenuItem
-            key={option}
-            selected={index === selectedIndex}
-            onClick={(event) => handleMenuItemClick(event, index)}
+          key={option}
+          selected={index === selectedIndex}
+          onClick={(event) => handleMenuItemClick(event, index)}
           >
             {option}
           </MenuItem>
