@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {  useState, useEffect } from 'react';
 
 import List from '@mui/material/List';
@@ -6,8 +7,11 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemButton from '@mui/material/ListItemButton';
 
+SimpleListMenu.propTypes = {
+  setSelectedFactory: PropTypes.func,
+};
 
-export default function SimpleListMenu() {
+export default function SimpleListMenu({setSelectedFactory}) {
     
   const [anchorEl, setAnchorEl] = useState(null);
   const [dataOptions, setAllDataPages] = useState([]);
@@ -36,6 +40,7 @@ export default function SimpleListMenu() {
   };
 
   const handleMenuItemClick = (event, index) => {
+    setSelectedFactory(dataOptions[index])
     setSelectedIndex(index);
     setAnchorEl(null);
   };

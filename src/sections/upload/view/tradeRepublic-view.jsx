@@ -97,10 +97,12 @@ export default function TradeRepublicPage() {
   // zieht die aktuellen daten aus dem netz von den unterschiedlichen seiten
   const [newData, setNewData] = useState([]); 
 
+  const [selectedFactory, setSelectedFactory] = useState('wikipedia.factory')
+
   useEffect(() => {
     // url die gelesen wird
     // conact with data from dataInputTest
-    fetch('http://127.0.0.1:8080/config?factoryId='.concat('boerse.de.stock.factory'))
+    fetch('http://127.0.0.1:8080/config?factoryId='.concat(selectedFactory))
       // ist ne json datei
       .then((response) => response.json())
       // nimm die daten die(momentan noch) im data.config.baseUrls array stehen
@@ -112,7 +114,7 @@ export default function TradeRepublicPage() {
       .catch((err) => {
         console.log(err.message);
       });
-  }, []);
+  }, [selectedFactory]);
 
 
   // var die die aus der drop down tabelle die ausgewählte seite wieergeben soll
@@ -149,7 +151,8 @@ export default function TradeRepublicPage() {
         />
 
         <DataInput />
-        <SimpleListMenu/>
+        {selectedFactory}
+        <SimpleListMenu setSelectedFactory={setSelectedFactory}/>
 
         <Scrollbar>
           <TableContainer sx={{ overflow: 'unset' }}>
