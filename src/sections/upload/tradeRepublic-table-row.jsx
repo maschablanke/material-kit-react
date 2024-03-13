@@ -42,13 +42,6 @@ export default function TradeRepublicTableRow({
             {typeof row[col] === 'object' ? "[object]" : row[col]}
           </TableCell>
         )}
-        
-        {/* <TableCell>{row.type}</TableCell>
-        <TableCell>{row.company}</TableCell>
-        <TableCell>{row.id}</TableCell>
-        <TableCell>{row.date}</TableCell>
-        <TableCell>{row.isin}</TableCell>
-        <TableCell>{row.pattern}</TableCell> */}
 
         <TableCell align="right">
           <IconButton onClick={handleOpenMenu}>

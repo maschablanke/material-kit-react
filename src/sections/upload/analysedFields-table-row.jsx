@@ -35,18 +35,13 @@ export default function AnalysedFieldsRow({
         <TableCell padding="checkbox">
           <Checkbox disableRipple checked={selected} onChange={handleClick} />
         </TableCell>
-
-        <TableCell>{id}</TableCell>
-
-        {/* <TableCell>{row ["row 0"]}</TableCell> */}
+        
 
         {showCols.map((col, i) => 
           <TableCell key={i}>
             {row[col]}
           </TableCell>
         )}
-
-
 
         <TableCell align="right">
           <IconButton onClick={handleOpenMenu}>

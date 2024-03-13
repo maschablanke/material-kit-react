@@ -46,6 +46,8 @@ export default function TradeRepublicPage() {
     }
   };
 
+  // selected wirklih alles, nicht nur die cols die auf der seite angezeigt werden
+  // FRAGE: kan man das ändern bzw sollte das anders sein
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
       const newSelecteds = newData.map((n) => n.id);
@@ -55,11 +57,11 @@ export default function TradeRepublicPage() {
     setSelected([]);
   };
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
+  const handleClick = (event, id) => {
+    const selectedIndex = selected.indexOf(id);
     let newSelected = [];
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
+      newSelected = newSelected.concat(selected, id);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -93,40 +95,35 @@ export default function TradeRepublicPage() {
 
 
   // seite von der die daten gerade kommen
-  // const [dataPage, setDataPage] = useState('finance.yahoo.com.stock.factory');
   // zieht die aktuellen daten aus dem netz von den unterschiedlichen seiten
   const [newData, setNewData] = useState([]); 
 
+  // aus dem drop down menu ausgewählte seite
+  // FRAGE: Why wird das in einem array gspeichert, muss das?
   const [selectedFactory, setSelectedFactory] = useState('wikipedia.factory')
-
+  
   useEffect(() => {
-    // url die gelesen wird
-    // conact with data from dataInputTest
+    // url die gelesen wird (concat conectet die urls)
     fetch('http://127.0.0.1:8080/config?factoryId='.concat(selectedFactory))
-      // ist ne json datei
-      .then((response) => response.json())
-      // nimm die daten die(momentan noch) im data.config.baseUrls array stehen
-      .then((data) => {
-        console.log(data);
-        setNewData(data.config.infos.fields);
-      })
-      // exeption
-      .catch((err) => {
-        console.log(err.message);
-      });
+    // ist ne json datei
+    .then((response) => response.json())
+    // nimm die daten die(momentan noch) im data.config.baseUrls array stehen
+    .then((data) => {
+      console.log(data);
+      console.log(selectedFactory);
+      setNewData(data.config.infos.fields);
+    })
+    // exeption
+    .catch((err) => {
+      console.log(err.message);
+    });
   }, [selectedFactory]);
-
-
-  // var die die aus der drop down tabelle die ausgewählte seite wieergeben soll
-  // const choosenWebsite =
-
-  // aus den json daten alle erwähnten columns
+  
+  
+  // zieht die überschrift für die zeilen aus den ausgewählten daten
   const showCols = allCols(newData)
   console.log(showCols)
-
-  // wie ist die überschrift der zeilen
-  //  const headLineCols = ["id", "path", "pattern", "url", "name", "type"];
-  // const headlineCols = ColumnsOfRows(newData)
+  console.log(showCols.length)
 
   const dataFiltered = applyFilter({
     //  inputData: tradeRepublic,
@@ -134,9 +131,10 @@ export default function TradeRepublicPage() {
     comparator: getComparator(order, orderBy),
     filterName,
   });
-
+  
   const notFound = !dataFiltered.length && !!filterName;
 
+  
   return (
     <Container>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
@@ -148,12 +146,16 @@ export default function TradeRepublicPage() {
           numSelected={selected.length}
           filterName={filterName}
           onFilterName={handleFilterByName}
-        />
+          />
 
+          {/* Erste dropdown tabelle */}
         <DataInput />
+
+          {/* dropdown tabelle die funktioniert */}
         {selectedFactory}
         <SimpleListMenu setSelectedFactory={setSelectedFactory}/>
-
+        
+        
         <Scrollbar>
           <TableContainer sx={{ overflow: 'unset' }}>
             <Table sx={{ minWidth: 800 }}>
@@ -165,26 +167,26 @@ export default function TradeRepublicPage() {
                 onRequestSort={handleSort}
                 onSelectAllClick={handleSelectAllClick}
                 headLabel={
-                  [...Array(showCols.length + 2).keys()].map((col, i) => (
+                  [...Array(showCols.length +1).keys()].map((col, i) => (
                     { id: i, label: showCols[i] }
-                  ))} />
+                    ))} />
               <TableBody>
                 {dataFiltered
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row, i) => (
                     <TradeRepublicTableRow
-                      showCols={showCols}
-                      key={i}
-                      row={row}
-                      selected={selected.indexOf(row.id) !== -1}
-                      handleClick={(event) => handleClick(event, row.id)}
+                    showCols={showCols}
+                    key={i}
+                    row={row}
+                    selected={selected.indexOf(row.id) !== -1}
+                    handleClick={(event) => handleClick(event, row.id)}
                     />
-                  ))}
+                    ))}
 
                 <TableEmptyRows
                   height={77}
                   emptyRows={emptyRows(page, rowsPerPage, newData.length)}
-                />
+                  />
 
                 {notFound && <TableNoData query={filterName} />}
               </TableBody>
@@ -200,7 +202,7 @@ export default function TradeRepublicPage() {
           onPageChange={handleChangePage}
           rowsPerPageOptions={[5, 10, 25]}
           onRowsPerPageChange={handleChangeRowsPerPage}
-        />
+          />
       </Card>
     </Container>
   );

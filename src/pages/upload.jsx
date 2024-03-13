@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-import {  TradeRepublicView, AnalysedFieldsView} from 'src/sections/upload/view';
+import {  TradeRepublicView } from 'src/sections/upload/view';
 
 
 
@@ -13,8 +13,8 @@ export default function UploadPage() {
         <title> Upload </title>
       </Helmet>
 
-      <AnalysedFieldsView />
       <TradeRepublicView />
+      {/* <AnalysedFieldsView /> */}
     </>
   );
 }

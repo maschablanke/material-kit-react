@@ -7,9 +7,6 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemButton from '@mui/material/ListItemButton';
 
-SimpleListMenu.propTypes = {
-  setSelectedFactory: PropTypes.func,
-};
 
 export default function SimpleListMenu({setSelectedFactory}) {
     
@@ -95,3 +92,8 @@ export default function SimpleListMenu({setSelectedFactory}) {
     </div>
   );
 }
+
+
+SimpleListMenu.propTypes = {
+  setSelectedFactory: PropTypes.func,
+};
