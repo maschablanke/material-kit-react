@@ -32,6 +32,7 @@ export default function SimpleListMenu({setSelectedFactory}) {
     }, []);
 
   const [selectedIndex, setSelectedIndex] = useState();
+
   const handleClickListItem = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -58,7 +59,6 @@ export default function SimpleListMenu({setSelectedFactory}) {
           id="lock-button"
           aria-haspopup="listbox"
           aria-controls="lock-menu"
-          aria-label="when device is locked"
           aria-expanded={open ? 'true' : undefined}
           onClick={handleClickListItem}
           >

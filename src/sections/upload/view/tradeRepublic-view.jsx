@@ -12,7 +12,7 @@ import TablePagination from '@mui/material/TablePagination';
 // import { tradeRepublic } from 'src/_mock/tradeRepublic';
 import Scrollbar from 'src/components/scrollbar';
 
-import DataInput from '../dataInput';
+// import DataInput from '../dataInput';
 import SimpleListMenu from '../dataInputTest';
 // import UploadFile from '../uploadButton';
 
@@ -95,6 +95,7 @@ export default function TradeRepublicPage() {
 
 
   // seite von der die daten gerade kommen
+  // const [dataPage, setDataPage] = useState('finance.yahoo.com.stock.factory');
   // zieht die aktuellen daten aus dem netz von den unterschiedlichen seiten
   const [newData, setNewData] = useState([]); 
 
@@ -117,6 +118,7 @@ export default function TradeRepublicPage() {
     .catch((err) => {
       console.log(err.message);
     });
+    // FRAGE: warum wird das array hier nochmal ausgegeben
   }, [selectedFactory]);
   
   
@@ -149,10 +151,10 @@ export default function TradeRepublicPage() {
           />
 
           {/* Erste dropdown tabelle */}
-        <DataInput />
+        {/* <DataInput /> */}
 
           {/* dropdown tabelle die funktioniert */}
-        {selectedFactory}
+        {/* {selectedFactory} */}
         <SimpleListMenu setSelectedFactory={setSelectedFactory}/>
         
         
