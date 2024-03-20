@@ -14,6 +14,7 @@ import UploadFile from './uploadButton';
 // ----------------------------------------------------------------------
 
 export default function TradeRepublicTableToolbar({ numSelected, filterName, onFilterName }) {
+    
   return (
     <Toolbar
       sx={{
@@ -51,16 +52,17 @@ export default function TradeRepublicTableToolbar({ numSelected, filterName, onF
       <UploadFile />
 
 
-
       {numSelected > 0 ? (
+        // onClick={handleDelete}
         <Tooltip title="Delete">
           <IconButton>
             <Iconify icon="eva:trash-2-fill" />
           </IconButton>
         </Tooltip>
       ) : (
+        // onClick={handleFilterList}
         <Tooltip title="Filter List">
-          <IconButton>
+          <IconButton >
             <Iconify icon="ic:round-filter-list" />
           </IconButton>
         </Tooltip>

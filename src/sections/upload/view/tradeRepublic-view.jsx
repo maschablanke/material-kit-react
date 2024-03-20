@@ -38,14 +38,17 @@ export default function TradeRepublicPage() {
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const handleSort = (event, id) => {
-    const isAsc = orderBy === id && order === 'asc';
-    if (id !== '') {
+  
+  const handleSort = (event, i) => {
+    const isAsc = orderBy === i && order === 'asc';
+    if (i !== '') {
       setOrder(isAsc ? 'desc' : 'asc');
-      setOrderBy(id);
+      setOrderBy(i);
     }
   };
 
+  console.log('orderBy',orderBy);
+  
   // selected wirklih alles, nicht nur die cols die auf der seite angezeigt werden
   // FRAGE: kan man das ändern bzw sollte das anders sein
   const handleSelectAllClick = (event) => {
@@ -56,7 +59,7 @@ export default function TradeRepublicPage() {
     }
     setSelected([]);
   };
-
+  
   const handleClick = (event, id) => {
     const selectedIndex = selected.indexOf(id);
     let newSelected = [];
@@ -70,12 +73,14 @@ export default function TradeRepublicPage() {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
         selected.slice(selectedIndex + 1)
-      );
-    }
-    setSelected(newSelected);
-  };
+        );
+      }
+      setSelected(newSelected);
+    };
 
-  const handleChangePage = (event, newPage) => {
+  console.log('selected', selected);
+    
+    const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
@@ -88,55 +93,59 @@ export default function TradeRepublicPage() {
     setPage(0);
     setFilterName(event.target.value);
   };
-
+  
   // liste von allen spalten aus der Tabelle data
   const allCols = (data) =>
-    data.flatMap(x => Object.keys(x)).filter((value, index, array) => array.indexOf(value) === index)
+  data.flatMap(x => Object.keys(x)).filter((value, index, array) => array.indexOf(value) === index);
 
 
   // seite von der die daten gerade kommen
   // const [dataPage, setDataPage] = useState('finance.yahoo.com.stock.factory');
   // zieht die aktuellen daten aus dem netz von den unterschiedlichen seiten
-  const [newData, setNewData] = useState([]); 
+  const [newData, setNewData] = useState([]);
+
+  console.log('newData', newData);
 
   // aus dem drop down menu ausgewählte seite
   // FRAGE: Why wird das in einem array gspeichert, muss das?
   const [selectedFactory, setSelectedFactory] = useState('wikipedia.factory')
-  
+
+
   useEffect(() => {
     // url die gelesen wird (concat conectet die urls)
     fetch('http://127.0.0.1:8080/config?factoryId='.concat(selectedFactory))
-    // ist ne json datei
-    .then((response) => response.json())
-    // nimm die daten die(momentan noch) im data.config.baseUrls array stehen
-    .then((data) => {
-      console.log(data);
-      console.log(selectedFactory);
-      setNewData(data.config.infos.fields);
-    })
-    // exeption
-    .catch((err) => {
-      console.log(err.message);
-    });
+    // fetch('http://localhost:8080/fieldView.html?factoryId='.concat(selectedFactory))
+      // ist ne json datei
+      .then((response) => response.json())
+      // nimm die daten die(momentan noch) im data.config.baseUrls array stehen
+      .then((data) => {
+        console.log('selected factory', selectedFactory);
+        setNewData(data.config.infos.fields);
+      })
+      // exeption
+      .catch((err) => {
+        console.log(err.message);
+      });
     // FRAGE: warum wird das array hier nochmal ausgegeben
   }, [selectedFactory]);
-  
-  
-  // zieht die überschrift für die zeilen aus den ausgewählten daten
-  const showCols = allCols(newData)
-  console.log(showCols)
-  console.log(showCols.length)
 
+
+  // zieht die überschrift für die zeilen aus den ausgewählten daten
+  const showCols = allCols(newData);
+  // array überschriften
+  console.log('showCols', showCols);
+  
   const dataFiltered = applyFilter({
     //  inputData: tradeRepublic,
     inputData: newData,
     comparator: getComparator(order, orderBy),
     filterName,
   });
-  
+
+  console.log('dataFilterd', dataFiltered);
+
   const notFound = !dataFiltered.length && !!filterName;
 
-  
   return (
     <Container>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
@@ -148,16 +157,16 @@ export default function TradeRepublicPage() {
           numSelected={selected.length}
           filterName={filterName}
           onFilterName={handleFilterByName}
-          />
+        />
 
-          {/* Erste dropdown tabelle */}
+        {/* Erste dropdown tabelle */}
         {/* <DataInput /> */}
 
-          {/* dropdown tabelle die funktioniert */}
+        {/* dropdown tabelle die funktioniert */}
         {/* {selectedFactory} */}
-        <SimpleListMenu setSelectedFactory={setSelectedFactory}/>
-        
-        
+        <SimpleListMenu setSelectedFactory={setSelectedFactory} />
+
+
         <Scrollbar>
           <TableContainer sx={{ overflow: 'unset' }}>
             <Table sx={{ minWidth: 800 }}>
@@ -169,26 +178,26 @@ export default function TradeRepublicPage() {
                 onRequestSort={handleSort}
                 onSelectAllClick={handleSelectAllClick}
                 headLabel={
-                  [...Array(showCols.length +1).keys()].map((col, i) => (
-                    { id: i, label: showCols[i] }
-                    ))} />
+                  [...Array(showCols.length + 1).keys()].map((col, i) => (
+                    { id : showCols[i] , label: showCols[i] }
+                  ))} />
               <TableBody>
                 {dataFiltered
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row, i) => (
                     <TradeRepublicTableRow
-                    showCols={showCols}
-                    key={i}
-                    row={row}
-                    selected={selected.indexOf(row.id) !== -1}
-                    handleClick={(event) => handleClick(event, row.id)}
+                      showCols={showCols}
+                      key={i}
+                      row={row}
+                      selected={selected.indexOf(row.id) !== -1}
+                      handleClick={(event) => handleClick(event, row.id)}
                     />
-                    ))}
+                  ))}
 
                 <TableEmptyRows
                   height={77}
                   emptyRows={emptyRows(page, rowsPerPage, newData.length)}
-                  />
+                />
 
                 {notFound && <TableNoData query={filterName} />}
               </TableBody>
@@ -204,7 +213,7 @@ export default function TradeRepublicPage() {
           onPageChange={handleChangePage}
           rowsPerPageOptions={[5, 10, 25]}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          />
+        />
       </Card>
     </Container>
   );

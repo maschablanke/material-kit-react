@@ -49,6 +49,8 @@ export default function UserPage() {
     }
   };
 
+  console.log('ORDERBY',orderBy);
+
   const handleSelectAllClick = (event) => {
     // Wenn die "Alle auswählen"-Checkbox aktiviert ist
     if (event.target.checked) {

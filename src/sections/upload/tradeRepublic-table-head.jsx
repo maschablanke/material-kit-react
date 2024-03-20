@@ -24,6 +24,7 @@ export default function TradeRepublicTableHead({
     onRequestSort(event, property);
   };
 
+
   return (
     <TableHead>
       <TableRow>
@@ -65,7 +66,7 @@ export default function TradeRepublicTableHead({
 
 TradeRepublicTableHead.propTypes = {
   order: PropTypes.oneOf(['asc', 'desc']),
-  orderBy: PropTypes.string,
+  orderBy: PropTypes.any,
   rowCount: PropTypes.number,
   headLabel: PropTypes.array,
   numSelected: PropTypes.number,

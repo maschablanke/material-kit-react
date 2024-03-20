@@ -19,6 +19,8 @@ export default function TradeRepublicTableRow({
   showCols,
   selected,
   handleClick,
+  key,
+
 }) {
   const [open, setOpen] = useState(null);
 
@@ -29,6 +31,18 @@ export default function TradeRepublicTableRow({
   const handleCloseMenu = () => {
     setOpen(null);
   };
+
+  const handleDelete = () => {
+
+  };
+
+  // für edit, ganze row wird wiedergegeben
+  console.log('row', row);
+
+  console.log('key', key);
+
+  // wenn selected dann ist selected= true, sonst false
+  console.log('selected?', selected);
 
   return (
     <>
@@ -56,16 +70,13 @@ export default function TradeRepublicTableRow({
         onClose={handleCloseMenu}
         anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        PaperProps={{
-          sx: { width: 140 },
-        }}
       >
         <MenuItem onClick={handleCloseMenu}>
           <Iconify icon="eva:edit-fill" sx={{ mr: 2 }} />
           Edit
         </MenuItem>
 
-        <MenuItem onClick={handleCloseMenu} sx={{ color: 'error.main' }}>
+        <MenuItem onClick={handleDelete} sx={{ color: 'error.main' }}>
           <Iconify icon="eva:trash-2-outline" sx={{ mr: 2 }} />
           Delete
         </MenuItem>
@@ -75,6 +86,7 @@ export default function TradeRepublicTableRow({
 }
 
 TradeRepublicTableRow.propTypes = {
+  key: PropTypes.any,
   row: PropTypes.any,
   showCols: PropTypes.any,
   handleClick: PropTypes.func,
