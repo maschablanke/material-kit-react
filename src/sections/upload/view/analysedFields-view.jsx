@@ -78,17 +78,13 @@ export default function AnalysedFieldsPage() {
     //  das element das entfehrnt werden soll
     const currentElement = dataFiltered[i];
     console.log('currentElement', currentElement);
-
     // index des elements...
     const currrentIndex = dataFiltered.indexOf(currentElement);
     console.log('currentIndex', currrentIndex);
-
-    
     console.log('dataFiltered', dataFiltered);
     // ..., das aus dem array data filtered entfehrnt wird 
-    const deletedElement = dataFiltered.splice(currrentIndex, 1)
+    const deletedElement = dataFiltered.splice(currrentIndex, 1);
     console.log('deletedElement', deletedElement );
-
   };
 
   const handleChangePage = (event, newPage) => {

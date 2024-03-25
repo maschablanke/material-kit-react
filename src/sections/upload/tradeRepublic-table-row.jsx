@@ -16,11 +16,11 @@ import Iconify from 'src/components/iconify';
 
 export default function TradeRepublicTableRow({
   row,
+  key,
   showCols,
   selected,
   handleClick,
-  key,
-
+  handleDelete,
 }) {
   const [open, setOpen] = useState(null);
 
@@ -32,17 +32,13 @@ export default function TradeRepublicTableRow({
     setOpen(null);
   };
 
-  const handleDelete = () => {
-
-  };
-
   // für edit, ganze row wird wiedergegeben
-  console.log('row', row);
+  console.log('row_TR', row);
 
-  console.log('rowID', row.id);
+  console.log('rowID_TR', row.id);
 
   // wenn selected dann ist selected= true, sonst false
-  console.log('selected?', selected);
+  console.log('selected?_TR', selected);
 
   return (
     <>
@@ -86,6 +82,7 @@ export default function TradeRepublicTableRow({
 }
 
 TradeRepublicTableRow.propTypes = {
+  handleDelete: PropTypes.any,
   key: PropTypes.any,
   row: PropTypes.any,
   showCols: PropTypes.any,

@@ -47,7 +47,7 @@ export default function TradeRepublicPage() {
     }
   };
 
-  console.log('orderBy',orderBy);
+  // console.log('orderBy_TR',orderBy);
   
   // selected wirklih alles, nicht nur die cols die auf der seite angezeigt werden
   // FRAGE: kan man das ändern bzw sollte das anders sein
@@ -78,7 +78,18 @@ export default function TradeRepublicPage() {
       setSelected(newSelected);
     };
 
-  console.log('selected', selected);
+  const handleDelete = (event , i ) => {
+    //  das element das entfehrnt werden soll
+    const currentElement = dataFiltered[i];
+    console.log('currentElement_TR', currentElement);
+    // index des elements...
+    const currrentIndex = dataFiltered.indexOf(currentElement);
+    console.log('currentIndex_TR', currrentIndex);
+    console.log('dataFiltered_TR', dataFiltered);
+    // ..., das aus dem array data filtered entfehrnt wird 
+    const deletedElement = dataFiltered.splice(currrentIndex, 1);
+    console.log('deletedElement_TR', deletedElement );
+  };
     
     const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -104,7 +115,7 @@ export default function TradeRepublicPage() {
   // zieht die aktuellen daten aus dem netz von den unterschiedlichen seiten
   const [newData, setNewData] = useState([]);
 
-  console.log('newData', newData);
+  // console.log('newData_TR', newData);
 
   // aus dem drop down menu ausgewählte seite
   // FRAGE: Why wird das in einem array gspeichert, muss das?
@@ -119,7 +130,7 @@ export default function TradeRepublicPage() {
       .then((response) => response.json())
       // nimm die daten die(momentan noch) im data.config.baseUrls array stehen
       .then((data) => {
-        console.log('selected factory', selectedFactory);
+        console.log('selected factory_TR', selectedFactory);
         setNewData(data.config.infos.fields);
       })
       // exeption
@@ -133,16 +144,16 @@ export default function TradeRepublicPage() {
   // zieht die überschrift für die zeilen aus den ausgewählten daten
   const showCols = allCols(newData);
   // array überschriften
-  console.log('showCols', showCols);
+  // console.log('showCols_TR', showCols);
   
   const dataFiltered = applyFilter({
-    //  inputData: tradeRepublic,
+//  inputData: tradeRepublic,
     inputData: newData,
     comparator: getComparator(order, orderBy),
     filterName,
   });
 
-  console.log('dataFilterd', dataFiltered);
+  console.log('dataFilterd_TR', dataFiltered);
 
   const notFound = !dataFiltered.length && !!filterName;
 
@@ -191,6 +202,7 @@ export default function TradeRepublicPage() {
                       row={row}
                       selected={selected.indexOf(row.id) !== -1}
                       handleClick={(event) => handleClick(event, row.id)}
+                      handleDelete={(event) => handleDelete(event, i)}
                     />
                   ))}
 
