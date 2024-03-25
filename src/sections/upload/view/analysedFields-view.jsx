@@ -35,23 +35,26 @@ export default function AnalysedFieldsPage() {
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const handleSort = (event, id) => {
-    const isAsc = orderBy === id && order === 'asc';
-    if (id !== '') {
+  const handleSort = (event, i) => {
+    const isAsc = orderBy === i && order === 'asc';
+    if (i !== '') {
       setOrder(isAsc ? 'desc' : 'asc');
-      setOrderBy(id);
+      setOrderBy(i);
     }
   };
 
+  // console.log('selected View', selected);
+  // console.log('selectedID', selected.id);
+
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = analysedFields.map((n) => n.name);
+      const newSelecteds = analysedFields.map((n) => n.id);
       setSelected(newSelecteds);
       return;
     }
     setSelected([]);
   };
-
+  
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
     let newSelected = [];
@@ -65,9 +68,27 @@ export default function AnalysedFieldsPage() {
       newSelected = newSelected.concat(
         selected.slice(0, selectedIndex),
         selected.slice(selectedIndex + 1)
-      );
-    }
-    setSelected(newSelected);
+        );
+      }
+      setSelected(newSelected);
+      console.log('id vom ausgewählten element', newSelected)
+  };
+
+  const handleDelete = (event , i ) => {
+    //  das element das entfehrnt werden soll
+    const currentElement = dataFiltered[i];
+    console.log('currentElement', currentElement);
+
+    // index des elements...
+    const currrentIndex = dataFiltered.indexOf(currentElement);
+    console.log('currentIndex', currrentIndex);
+
+    
+    console.log('dataFiltered', dataFiltered);
+    // ..., das aus dem array data filtered entfehrnt wird 
+    const deletedElement = dataFiltered.splice(currrentIndex, 1)
+    console.log('deletedElement', deletedElement );
+
   };
 
   const handleChangePage = (event, newPage) => {
@@ -90,16 +111,18 @@ export default function AnalysedFieldsPage() {
     filterName,
   });
 
+  // console.log('dataFiltered',dataFiltered);
+
   const notFound = !dataFiltered.length && !!filterName;
 
   // kommt von KI, nicht vrändern!
-  const showCols = ["row 0", "row 1", "row 3", "row 5", "row 17"];
+  const showCols = ["id", "row 1", "row 3", "row 5", "row 17"];
   
   // kommt von KI, nicht vrändern!
-  const headLineCols = ["id", "adress", "date", "company", "name"];
+  const headLineCols = ["id", "date", "adress", "company", "name"];
 
   const headline = [...Array(showCols.length+1).keys()].map((col, i) => (
-    { id: i, label: headLineCols[i] }
+    { id: showCols[i], label: headLineCols[i] }
   ))
 
   return (
@@ -132,11 +155,13 @@ export default function AnalysedFieldsPage() {
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row, i) => (
                     <AnalysedFieldsRow
+                      dataFiltered={dataFiltered}
                       showCols={showCols}
                       key={i}
                       row={row}
-                      selected={selected.indexOf(row.name) !== -1}
-                      handleClick={(event) => handleClick(event, row.name)}
+                      selected={selected.indexOf(row.id) !== -1}
+                      handleClick={(event) => handleClick(event, row.id)}
+                      handleDelete={(event) => handleDelete(event, i)}
                     />
                   ))}
 

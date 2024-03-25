@@ -39,7 +39,7 @@ export default function TradeRepublicTableRow({
   // für edit, ganze row wird wiedergegeben
   console.log('row', row);
 
-  console.log('key', key);
+  console.log('rowID', row.id);
 
   // wenn selected dann ist selected= true, sonst false
   console.log('selected?', selected);

@@ -14,10 +14,11 @@ import Iconify from 'src/components/iconify';
 
 export default function AnalysedFieldsRow({
   row,
-  id,
+  dataFiltered,
   showCols,
   selected,
   handleClick,
+  handleDelete
 }) {
   const [open, setOpen] = useState(null);
 
@@ -28,6 +29,12 @@ export default function AnalysedFieldsRow({
   const handleCloseMenu = () => {
     setOpen(null);
   };
+
+  console.log('row',row);
+  // console.log('showCols',showCols);
+  // console.log('SELECTED',selected);
+  console.log('dataFiltered',dataFiltered);
+
 
   return (
     <>
@@ -65,7 +72,7 @@ export default function AnalysedFieldsRow({
           Edit
         </MenuItem>
 
-        <MenuItem onClick={handleCloseMenu} sx={{ color: 'error.main' }}>
+        <MenuItem onClick={handleDelete} sx={{ color: 'error.main' }}>
           <Iconify icon="eva:trash-2-outline" sx={{ mr: 2 }} />
           Delete
         </MenuItem>
@@ -75,8 +82,9 @@ export default function AnalysedFieldsRow({
 }
 
 AnalysedFieldsRow.propTypes = {
+  handleDelete: PropTypes.any,
+  dataFiltered: PropTypes.any,
   row: PropTypes.any,
-  id: PropTypes.any,
   showCols: PropTypes.any,
   handleClick: PropTypes.func,
   selected: PropTypes.any,
