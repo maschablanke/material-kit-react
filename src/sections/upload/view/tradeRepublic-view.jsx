@@ -12,7 +12,6 @@ import TablePagination from '@mui/material/TablePagination';
 // import { tradeRepublic } from 'src/_mock/tradeRepublic';
 import Scrollbar from 'src/components/scrollbar';
 
-// import DataInput from '../dataInput';
 import SimpleListMenu from '../dataInputTest';
 // import UploadFile from '../uploadButton';
 
@@ -112,7 +111,7 @@ export default function TradeRepublicPage() {
 
   // seite von der die daten gerade kommen
   // const [dataPage, setDataPage] = useState('finance.yahoo.com.stock.factory');
-  // zieht die aktuellen daten aus dem netz von den unterschiedlichen seiten
+  
   const [newData, setNewData] = useState([]);
 
   // console.log('newData_TR', newData);
@@ -144,7 +143,7 @@ export default function TradeRepublicPage() {
   // zieht die überschrift für die zeilen aus den ausgewählten daten
   const showCols = allCols(newData);
   // array überschriften
-  // console.log('showCols_TR', showCols);
+  console.log('showCols_TR', showCols);
   
   const dataFiltered = applyFilter({
 //  inputData: tradeRepublic,
@@ -170,13 +169,8 @@ export default function TradeRepublicPage() {
           onFilterName={handleFilterByName}
         />
 
-        {/* Erste dropdown tabelle */}
-        {/* <DataInput /> */}
-
-        {/* dropdown tabelle die funktioniert */}
-        {/* {selectedFactory} */}
+        {/* dropdown tabelle */}
         <SimpleListMenu setSelectedFactory={setSelectedFactory} />
-
 
         <Scrollbar>
           <TableContainer sx={{ overflow: 'unset' }}>

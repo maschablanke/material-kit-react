@@ -38,6 +38,11 @@ const navConfig = [
     icon: icon('CloudUploadIcon'),
   },
   {
+    title: 'oma',
+    path: '/oma',
+    icon: icon('CloudUploadIcon'),
+  },
+  {
     title: 'Not found',
     path: '/404',
     icon: icon('ic_disabled'),
