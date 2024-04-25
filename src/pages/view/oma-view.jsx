@@ -4,9 +4,10 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
-import AppWebsiteVisits from '../app-website-visits';
-import AppWidgetSummary from '../app-widget-summary';
-import AppCurrentVisits from '../app-current-visits';
+import OmaPortfolio from '../../sections/oma/omaPortfolioBody';
+import AppWebsiteVisits from '../../sections/oma/app-website-visits';
+import AppWidgetSummary from '../../sections/overview/app-widget-summary';
+import AppCurrentVisits from '../../sections/oma/app-current-visits';
 
 // ----------------------------------------------------------------------
 export default function AppView() {
@@ -33,7 +34,7 @@ export default function AppView() {
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
           />
         </Grid>
-
+{/* 
         <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
             title="Investiert"
@@ -41,9 +42,16 @@ export default function AppView() {
             color="info"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
           />
+        </Grid> */}
+
+        <Grid xs={12} sm={6} md={4}>
+          <OmaPortfolio
+          title="Oma"
+          />
         </Grid>
 
-        <Grid xs={12} sm={6} md={3}>
+
+        <Grid xs={12} sm={6} md={4}>
           <AppWidgetSummary
             title="Festgeld"
             total={currentInterest}
@@ -68,7 +76,6 @@ export default function AppView() {
                 '08/01/2003',
                 '09/01/2003',
                 '10/01/2003',
-                '11/01/2003',
               ],
               series: [
                 {
@@ -77,12 +84,12 @@ export default function AppView() {
                   fill: 'solid',
                   data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
                 },
-                {
-                  name: 'Investiert',
-                  type: 'area',
-                  fill: 'gradient',
-                  data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
-                },
+                // {
+                //   name: 'Investiert',
+                //   type: 'area',
+                //   fill: 'gradient',
+                //   data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+                // },
                 {
                   name: 'Festgeld',
                   type: 'line',

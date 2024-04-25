@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 
-import { OmaView } from 'src/sections/oma/view';
+import { OmaView } from 'src/pages/view';
 
 
 
