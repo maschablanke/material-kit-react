@@ -5,11 +5,11 @@ export const omaData = [
       "account": 43.5,
       "stock": [
         {
-          "id": "A0RPWH",
+          "id": "EUNL.DE",
           "value": 130
         },
         {
-          "id": "DBX0AN",
+          "id": "XEON.DE",
           "value": 250
         }
       ]
@@ -25,7 +25,7 @@ export const omaData = [
         "date": "2.11.23",
         "stock": {
           "value": 76.684,
-          "id": "A0RPWH",
+          "id": "EUNL.DE",
           "count": 130
         }
       },
@@ -37,7 +37,7 @@ export const omaData = [
         "date": "22.1.24",
         "stock": {
           "value": 139.91,
-          "id": "DBX0AN",
+          "id": "XEON.DE",
           "count": 214
         }
       },
@@ -45,7 +45,7 @@ export const omaData = [
         "date": "6.2.24",
         "stock": {
           "value": 140.19,
-          "id": "DBX0AN",
+          "id": "XEON.DE",
           "count": 36
         }
       }
