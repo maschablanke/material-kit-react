@@ -19,13 +19,22 @@ export default function AppView() {
   const [currentInvest, setCurrentInvest] = useState([]);
   const [currentInterest, setCurrentInterest] = useState([]);
 
-  console.log('OmaData1', omaData);
+  console.log('OmaData1', omaData.stock);
+  console.log( omaData);
+  console.log( 'OmaData', omaData);
 
   // const totalOma = (omaData) =>
   // data.flatMap(x => Object.keys(x)).filter((value, index, array) => array.indexOf(value) === index);
   // ;
+
   const showInfo = ["status", "account", "stock"];
   console.log(showInfo, 'showInfo');
+
+  console.log ('bargeld', omaData.status.account)
+  console.log ('msci world', omaData.status.stock[0].value)
+  console.log ('festgeld', omaData.status.stock[1].value)
+
+  // const festgeld = value mal tägliche preise 
 
 
   return (

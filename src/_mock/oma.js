@@ -1,20 +1,22 @@
 
-export const omaData = [
- {
-    "status": "status",
+export const omaData = {
+    "status": {
+      // account : aktueller bargeld bestand
       "account": 43.5,
       "stock": [
         {
           "id": "EUNL.DE",
+          // Anzahl aktien vn msci world
           "value": 130
         },
         {
           "id": "XEON.DE",
+          // Anzahl aktien von festgeld 
           "value": 250
         }
       ]
 },
-{
+
     "event":
     [
       {
@@ -51,4 +53,3 @@ export const omaData = [
       }
     ]
   }
-]
