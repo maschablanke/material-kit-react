@@ -107,15 +107,19 @@ export default function AnalysedFieldsPage() {
     filterName,
   });
 
-  // console.log('dataFiltered',dataFiltered);
+  console.log(analysedFields, 'analisedFields');
+  console.log('dataFiltered',dataFiltered);
 
+  
   const notFound = !dataFiltered.length && !!filterName;
 
   // kommt von KI, nicht vrändern!
   const showCols = ["id", "row 1", "row 3", "row 5", "row 17"];
+  console.log(showCols, 'showCols');
+
   
   // kommt von KI, nicht vrändern!
-  const headLineCols = ["id", "date", "adress", "company", "name"];
+  const headLineCols = ["id", "date", "adress", "company", "namee"];
 
   const headline = [...Array(showCols.length+1).keys()].map((col, i) => (
     { id: showCols[i], label: headLineCols[i] }

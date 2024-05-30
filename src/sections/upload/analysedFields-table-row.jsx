@@ -30,10 +30,8 @@ export default function AnalysedFieldsRow({
     setOpen(null);
   };
 
-  console.log('row',row);
-  // console.log('showCols',showCols);
-  // console.log('SELECTED',selected);
-  console.log('dataFiltered',dataFiltered);
+  console.log('row111',row);
+  console.log('dataFiltered111',dataFiltered);
 
 
   return (

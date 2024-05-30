@@ -4,19 +4,28 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
+import { omaData } from 'src/_mock/oma';
+
 import OmaPortfolio from '../../sections/oma/omaPortfolioBody';
+import AppCurrentVisits from '../../sections/oma/app-current-visits';
 import AppWebsiteVisits from '../../sections/oma/app-website-visits';
 import AppWidgetSummary from '../../sections/overview/app-widget-summary';
-import AppCurrentVisits from '../../sections/oma/app-current-visits';
 
 // ----------------------------------------------------------------------
 export default function AppView() {
 
   
-  const [currentTotal, setCurrentTotal] = useState(12000);
-  const [currentInvest, setCurrentInvest] = useState(10000);
-  const [currentInterest, setCurrentInterest] = useState(2000);
+  const [currentTotal, setCurrentTotal] = useState([]);
+  const [currentInvest, setCurrentInvest] = useState([]);
+  const [currentInterest, setCurrentInterest] = useState([]);
 
+  console.log('OmaData1', omaData);
+
+  // const totalOma = (omaData) =>
+  // data.flatMap(x => Object.keys(x)).filter((value, index, array) => array.indexOf(value) === index);
+  // ;
+  const showInfo = ["status", "account", "stock"];
+  console.log(showInfo, 'showInfo');
 
 
   return (
@@ -34,6 +43,7 @@ export default function AppView() {
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
           />
         </Grid>
+
 {/* 
         <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary

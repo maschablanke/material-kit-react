@@ -113,7 +113,6 @@ export default function TradeRepublicPage() {
   // const [dataPage, setDataPage] = useState('finance.yahoo.com.stock.factory');
   
   const [newData, setNewData] = useState([]);
-
   // console.log('newData_TR', newData);
 
   // aus dem drop down menu ausgewählte seite
