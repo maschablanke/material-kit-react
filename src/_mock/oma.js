@@ -12,7 +12,7 @@ export const omaData = {
         {
           "id": "XEON.DE",
           // Anzahl aktien von festgeld 
-          "value": 250
+          "value": 250 
         }
       ]
 },
