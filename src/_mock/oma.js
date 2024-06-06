@@ -5,13 +5,15 @@ export const omaData = {
       "account": 43.5,
       "stock": [
         {
+          // msci
           "id": "EUNL.DE",
           // Anzahl aktien vn msci world
           "value": 130
         },
         {
+
           "id": "XEON.DE",
-          // Anzahl aktien von festgeld 
+          // Anzahl aktien von xtracker (quasi aktie wie bei einem festgeldkonto)
           "value": 250 
         }
       ]

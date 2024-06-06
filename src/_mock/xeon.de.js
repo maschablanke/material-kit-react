@@ -1,6 +1,7 @@
 
 
-export const xeonDEDaylyClose = {
+export const xeonDEDaylyClose =
+  { 
     "2008-01-01 23:00:00": 132.347,
     "2008-01-02 23:00:00": 132.36,
     "2008-01-03 23:00:00": 132.374,

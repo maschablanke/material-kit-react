@@ -5,6 +5,8 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
 import { omaData } from 'src/_mock/oma';
+import { xeonDEDaylyClose } from 'src/_mock/xeon.de';
+import { EUNLDaylyClose } from 'src/_mock/EUNL';
 
 import OmaPortfolio from '../../sections/oma/omaPortfolioBody';
 import AppCurrentVisits from '../../sections/oma/app-current-visits';
@@ -16,25 +18,29 @@ export default function AppView() {
 
   
   const [currentTotal, setCurrentTotal] = useState([]);
-  const [currentInvest, setCurrentInvest] = useState([]);
-  const [currentInterest, setCurrentInterest] = useState([]);
+  
+  const [currentCash, setCurrentCash] = useState(omaData.status.account);
+  console.log ('bargeld', omaData.status.account);
+  
 
-  console.log('OmaData1', omaData.stock);
-  console.log( omaData);
-  console.log( 'OmaData', omaData);
+  // Anzahl an Shares
+  const numXtracker = omaData.status.stock[1].value;
+  console.log ('xtracker anzahl', numXtracker);
+  
+  // Anzahl an Shares
+  const numMSCI = omaData.status.stock[0].value ;
+  console.log ('msci world anzahl', omaData.status.stock[0].value)
 
-  // const totalOma = (omaData) =>
-  // data.flatMap(x => Object.keys(x)).filter((value, index, array) => array.indexOf(value) === index);
-  // ;
-
-  const showInfo = ["status", "account", "stock"];
-  console.log(showInfo, 'showInfo');
-
-  console.log ('bargeld', omaData.status.account)
-  console.log ('msci world', omaData.status.stock[0].value)
-  console.log ('festgeld', omaData.status.stock[1].value)
-
-  // const festgeld = value mal tägliche preise 
+// gets the most current value for the object
+  const getLatestValue = (obj) => {
+    const keys =  (Object.keys(obj));
+    console.log ('keys', keys);
+    const keysLength = keys.length;
+    console.log ('lenghtOfKeyarray', keysLength)
+    const lastKey = keys[keysLength-1];
+    console.log ('lastValue', obj[lastKey]);
+    return obj[lastKey];
+  }
 
 
   return (
@@ -53,27 +59,31 @@ export default function AppView() {
           />
         </Grid>
 
-{/* 
-        <Grid xs={12} sm={6} md={3}>
-          <AppWidgetSummary
-            title="Investiert"
-            total={currentInvest}
-            color="info"
-            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
-          />
-        </Grid> */}
 
-        <Grid xs={12} sm={6} md={4}>
+        <Grid xs={12} sm={6} md={3}>
           <OmaPortfolio
-          title="Oma"
+          title="Oma Not invested"
+          total={currentCash}
+          icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
           />
         </Grid>
 
 
-        <Grid xs={12} sm={6} md={4}>
+        <Grid xs={12} sm={6} md={3}>
           <AppWidgetSummary
-            title="Festgeld"
-            total={currentInterest}
+          // xeon
+            title="xtracker"
+            total={(getLatestValue(xeonDEDaylyClose)*numXtracker)}
+            color="warning"
+            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_buy.png" />}
+          />
+        </Grid>
+
+        <Grid xs={12} sm={6} md={3}>
+          <AppWidgetSummary
+          // eunl
+            title="MSCI World"
+            total={(getLatestValue(EUNLDaylyClose)*numMSCI)}
             color="warning"
             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_buy.png" />}
           />
@@ -125,8 +135,8 @@ export default function AppView() {
             title="Übersicht"
             chart={{
               series: [
-                { label: 'Invest', value: currentInvest },
-                { label: 'Festgeld', value: currentInterest },
+                // { label: 'Invest', value: currentInvest },
+                // { label: 'Festgeld', value: currentInterest },
               ],
             }}
           />
