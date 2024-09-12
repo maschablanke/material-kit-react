@@ -20,15 +20,18 @@ const StyledChart = styled(Chart)(({ theme }) => ({
     height: `100% !important`,
   },
   '& .apexcharts-legend': {
+    // Setzt die Höhe der Legende des Charts auf den Wert von LEGEND_HEIGHT
     height: LEGEND_HEIGHT,
+    // Fügt oben an der Legende eine gestrichelte Linie ein
     borderTop: `dashed 1px ${theme.palette.divider}`,
+    // Setzt die Position der Legende basierend auf der Chart- und Legendenhöhe
     top: `calc(${CHART_HEIGHT - LEGEND_HEIGHT}px) !important`,
   },
 }));
 
 // ----------------------------------------------------------------------
 
-export default function AppCurrentVisits({ title, subheader, chart, ...other }) {
+export default function PieChart({ title, subheader, chart, ...other }) {
   const theme = useTheme();
 
   const { colors, series, options } = chart;
@@ -94,7 +97,7 @@ export default function AppCurrentVisits({ title, subheader, chart, ...other }) 
   );
 }
 
-AppCurrentVisits.propTypes = {
+PieChart.propTypes = {
   chart: PropTypes.object,
   subheader: PropTypes.string,
   title: PropTypes.string,

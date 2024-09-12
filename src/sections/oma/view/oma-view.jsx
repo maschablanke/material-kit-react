@@ -8,10 +8,10 @@ import { omaData } from 'src/_mock/oma';
 import { xeonDEDaylyClose } from 'src/_mock/xeon.de';
 import { EUNLDaylyClose } from 'src/_mock/EUNL';
 
-import OmaPortfolio from '../../sections/oma/omaPortfolioBody';
-import AppCurrentVisits from '../../sections/oma/app-current-visits';
-import AppWebsiteVisits from '../../sections/oma/app-website-visits';
-import AppWidgetSummary from '../../sections/overview/app-widget-summary';
+import OmaPortfolio from '../omaPortfolioBody';
+import AppWebsiteVisits from '../app-website-visits';
+import AppWidgetSummary from '../../overview/app-widget-summary';
+import PieChart from '../pie-chart';
 
 // ----------------------------------------------------------------------
 export default function AppView() {
@@ -131,12 +131,13 @@ export default function AppView() {
         </Grid>
 
         <Grid xs={12} md={6} lg={4}>
-          <AppCurrentVisits
+          <PieChart
             title="Übersicht"
             chart={{
               series: [
-                // { label: 'Invest', value: currentInvest },
-                // { label: 'Festgeld', value: currentInterest },
+                 { id: 0,label: 'Invest', value: 100 },
+                 { id: 1,label: 'Festgeld', value: 200 },
+                 { id: 2,label: 'Total', value: 150 }
               ],
             }}
           />
