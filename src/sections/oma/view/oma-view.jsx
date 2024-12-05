@@ -5,22 +5,26 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
 import { omaData } from 'src/_mock/oma';
-import { xeonDEDaylyClose } from 'src/_mock/xeon.de';
 import { EUNLDaylyClose } from 'src/_mock/EUNL';
+import { xeonDEDaylyClose } from 'src/_mock/xeon.de';
 
+import PieChart from '../pie-chart';
 import OmaPortfolio from '../omaPortfolioBody';
 import AppWebsiteVisits from '../app-website-visits';
 import AppWidgetSummary from '../../overview/app-widget-summary';
-import PieChart from '../pie-chart';
 
 // ----------------------------------------------------------------------
 export default function AppView() {
 
   
   const [currentTotal, setCurrentTotal] = useState([]);
+  console.log (setCurrentTotal);
+
+
   
   const [currentCash, setCurrentCash] = useState(omaData.status.account);
   console.log ('bargeld', omaData.status.account);
+  console.log (setCurrentCash);
   
 
   // Anzahl an Shares
